@@ -1,0 +1,72 @@
+{
+  "random_seed": 42,
+  "source_dataset_path": "dataset\\qr-threat-detection-dataset-main\\dataset",
+  "source_url_zip_path": "dataset\\qr-threat-detection-dataset-main\\dataset\\url_data.zip",
+  "qr_dataset": {
+    "original_total_images": 2400,
+    "deduplicated_total_images": 2284,
+    "removed_redundant_duplicates": 116,
+    "duplicate_groups_count": 51,
+    "duplicate_breakdown_by_class": {
+      "benign": 111,
+      "malicious": 5
+    },
+    "class_totals": {
+      "tampered": 800,
+      "benign": 689,
+      "malicious": 795
+    },
+    "splits": {
+      "train": {
+        "total": 1600,
+        "by_class": {
+          "benign": 483,
+          "malicious": 557,
+          "tampered": 560
+        }
+      },
+      "val": {
+        "total": 342,
+        "by_class": {
+          "benign": 103,
+          "malicious": 119,
+          "tampered": 120
+        }
+      },
+      "test": {
+        "total": 342,
+        "by_class": {
+          "benign": 103,
+          "malicious": 119,
+          "tampered": 120
+        }
+      }
+    }
+  },
+  "url_dataset": {
+    "source_rows_available": 1048575,
+    "sampled_total_rows": 50000,
+    "target_per_class": 25000,
+    "class_distribution": {
+      "benign": 25000,
+      "malicious": 25000
+    },
+    "columns": [
+      "url",
+      "label",
+      "result"
+    ],
+    "unnamed_trailing_column_removed": true
+  },
+  "model_input_recommendations": {
+    "visual_cnn": {
+      "recommended_image_size": [
+        224,
+        224
+      ],
+      "color_channels": 3,
+      "rationale": "224x224 standard lightweight resolution optimal for 4GB VRAM RTX 3050 (e.g. batch size 32 or 64) without memory pressure while preserving QR finder patterns.",
+      "source_files_untouched": true
+    }
+  }
+}

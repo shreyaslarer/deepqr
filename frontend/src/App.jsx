@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import QRUpload from './components/QRUpload.jsx';
 import PipelineVisualization from './components/PipelineVisualization.jsx';
+import RiskAssessmentResult from './components/RiskAssessmentResult.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('analyze');
@@ -30,6 +31,7 @@ export default function App() {
         <Hero onAnalyzeClick={handleAnalyzeClick} />
         <QRUpload />
         <PipelineVisualization />
+        <RiskAssessmentResult />
       </main>
     </div>
   );

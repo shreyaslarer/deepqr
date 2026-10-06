@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import QRUpload from './components/QRUpload.jsx';
+import PipelineVisualization from './components/PipelineVisualization.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('analyze');
@@ -28,6 +29,7 @@ export default function App() {
       <main className="flex-1">
         <Hero onAnalyzeClick={handleAnalyzeClick} />
         <QRUpload />
+        <PipelineVisualization />
       </main>
     </div>
   );

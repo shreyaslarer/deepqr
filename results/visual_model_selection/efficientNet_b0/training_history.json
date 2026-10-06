@@ -1,0 +1,72 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.5922828459739685,
+    "val_loss": 0.3082334061115109,
+    "val_accuracy": 0.9385964912280702,
+    "macro_precision": 0.9390515734265734,
+    "macro_recall": 0.9379755785809469,
+    "macro_f1": 0.9374901393208029,
+    "benign_recall": 0.9223300970873787,
+    "malicious_recall": 0.9915966386554622,
+    "tampered_recall": 0.9,
+    "epoch_time_sec": 13.319836378097534,
+    "peak_vram_mb": 228.8388671875
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.28581590950489044,
+    "val_loss": 0.18750638065979494,
+    "val_accuracy": 0.9619883040935673,
+    "macro_precision": 0.9610302452567838,
+    "macro_recall": 0.9624434563469402,
+    "macro_f1": 0.9613337692203889,
+    "benign_recall": 0.970873786407767,
+    "malicious_recall": 0.9747899159663865,
+    "tampered_recall": 0.9416666666666667,
+    "epoch_time_sec": 12.471812725067139,
+    "peak_vram_mb": 228.8388671875
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.2071995235979557,
+    "val_loss": 0.14483649863137138,
+    "val_accuracy": 0.9883040935672515,
+    "macro_precision": 0.9880341880341881,
+    "macro_recall": 0.9884070780415727,
+    "macro_f1": 0.9882070568091482,
+    "benign_recall": 0.9902912621359223,
+    "malicious_recall": 0.9915966386554622,
+    "tampered_recall": 0.9833333333333333,
+    "epoch_time_sec": 12.843177318572998,
+    "peak_vram_mb": 228.8388671875
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.16193030774593353,
+    "val_loss": 0.10580729043971725,
+    "val_accuracy": 0.9883040935672515,
+    "macro_precision": 0.9880341880341881,
+    "macro_recall": 0.9884070780415727,
+    "macro_f1": 0.9882070568091482,
+    "benign_recall": 0.9902912621359223,
+    "malicious_recall": 0.9915966386554622,
+    "tampered_recall": 0.9833333333333333,
+    "epoch_time_sec": 13.103162050247192,
+    "peak_vram_mb": 228.8388671875
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.1388947343826294,
+    "val_loss": 0.09392937207431123,
+    "val_accuracy": 0.9824561403508771,
+    "macro_precision": 0.9830347028088505,
+    "macro_recall": 0.981911243461786,
+    "macro_f1": 0.9823859324424671,
+    "benign_recall": 0.970873786407767,
+    "malicious_recall": 0.9831932773109243,
+    "tampered_recall": 0.9916666666666667,
+    "epoch_time_sec": 12.584299087524414,
+    "peak_vram_mb": 228.8388671875
+  }
+]

@@ -53,15 +53,15 @@ const DEMO_SPECIMENS = {
 /**
  * RiskAssessmentResult component for DeepQR Shield.
  *
- * Implements a serious, inspection-grade result presentation layer:
+ * Implements an inspection-grade result presentation layer:
  * - Visually supports all 3 final risk classifications: SAFE, SUSPICIOUS, MALICIOUS.
  * - Non-color-dependent communication (explicit text, distinct icons, semantic badges).
  * - Treats decoded destination strictly as UNTRUSTED content (non-clickable, no automatic navigation).
- * - Features raw destination copy action with clipboard feedback.
+ * - Raw destination copy action with clipboard feedback.
  * - Displays dual-modality analytical signals (Visual Analysis, URL Analysis, Fusion).
- * - Provides an evidence-based "Why this assessment?" section without marketing hype.
- * - Includes prominent destination safety notice.
- * - Uses controlled demonstration specimens to establish the visual design without faking live ML output.
+ * - Evidence-based "Why this assessment?" section without marketing hype.
+ * - Controlled demonstration specimens with smooth, restrained state transition.
+ * - Zero em-dashes and en-dashes throughout.
  */
 export default function RiskAssessmentResult() {
   const [activeSpecimenKey, setActiveSpecimenKey] = useState('safe');
@@ -75,7 +75,6 @@ export default function RiskAssessmentResult() {
       setCopyFeedback(true);
       setTimeout(() => setCopyFeedback(false), 2000);
     } catch {
-      // Fallback if clipboard API is restricted
       setCopyFeedback(false);
     }
   };
@@ -101,7 +100,7 @@ export default function RiskAssessmentResult() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2
@@ -110,13 +109,13 @@ export default function RiskAssessmentResult() {
               >
                 Risk Assessment Report
               </h2>
-              <p className="mt-2 text-sm text-zinc-400 sm:text-base">
+              <p className="mt-2 text-sm text-zinc-400 sm:text-base leading-relaxed">
                 Inspection results synthesized across visual image characteristics and decoded destination analysis.
               </p>
             </div>
 
-            {/* Specimen Inspection Controls (Clearly labeled for visual design verification) */}
-            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/60 p-1">
+            {/* Specimen Inspection Controls */}
+            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-white/[0.08] bg-zinc-900/80 p-1">
               <span className="px-2 text-xs font-medium text-zinc-500 select-none">
                 Preview state:
               </span>
@@ -152,13 +151,16 @@ export default function RiskAssessmentResult() {
         </div>
 
         {/* Main Result Report Surface */}
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-8 space-y-8">
+        <div
+          key={activeSpecimenKey}
+          className="rounded-2xl border border-white/[0.08] bg-zinc-900/40 backdrop-blur-md p-6 sm:p-8 space-y-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
+        >
           {/* 1. Final Risk Classification */}
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-zinc-800/80 pb-6">
             <div className="flex items-start gap-3.5">
               {renderIcon(specimen.classification)}
               <div>
-                <span className="text-xs font-medium uppercase tracking-wider text-zinc-500 block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 block">
                   Threat Classification
                 </span>
                 <div className="mt-0.5 flex items-center gap-3">
@@ -175,9 +177,9 @@ export default function RiskAssessmentResult() {
               </div>
             </div>
 
-            <div className="text-xs text-zinc-500 font-mono sm:text-right shrink-0">
-              <span className="block text-zinc-400 font-sans">Payload Type:</span>
-              <span className="text-zinc-300 font-sans font-medium">{specimen.payloadType}</span>
+            <div className="text-xs text-zinc-500 sm:text-right shrink-0">
+              <span className="block text-zinc-400">Payload Type:</span>
+              <span className="text-zinc-300 font-mono font-medium">{specimen.payloadType}</span>
             </div>
           </div>
 
@@ -228,7 +230,7 @@ export default function RiskAssessmentResult() {
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Visual Signal */}
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="rounded-xl border border-white/[0.06] bg-zinc-950/60 p-4 shadow-xs">
                 <span className="text-xs font-mono text-zinc-500 block mb-1">SIGNAL 01</span>
                 <span className="text-sm font-semibold text-zinc-200 block mb-1.5">Visual Analysis</span>
                 <p className="text-xs text-zinc-400 leading-relaxed">
@@ -237,7 +239,7 @@ export default function RiskAssessmentResult() {
               </div>
 
               {/* URL Signal */}
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="rounded-xl border border-white/[0.06] bg-zinc-950/60 p-4 shadow-xs">
                 <span className="text-xs font-mono text-zinc-500 block mb-1">SIGNAL 02</span>
                 <span className="text-sm font-semibold text-zinc-200 block mb-1.5">URL Analysis</span>
                 <p className="text-xs text-zinc-400 leading-relaxed">
@@ -246,7 +248,7 @@ export default function RiskAssessmentResult() {
               </div>
 
               {/* Fusion Signal */}
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="rounded-xl border border-white/[0.06] bg-zinc-950/60 p-4 shadow-xs">
                 <span className="text-xs font-mono text-emerald-500/80 block mb-1">SYNTHESIS</span>
                 <span className="text-sm font-semibold text-zinc-200 block mb-1.5">Multimodal Fusion</span>
                 <p className="text-xs text-zinc-400 leading-relaxed">

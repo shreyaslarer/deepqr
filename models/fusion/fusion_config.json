@@ -1,0 +1,66 @@
+{
+  "system_name": "DeepQR Shield - Multimodal Decision-Level Fusion",
+  "version": "1.0.0",
+  "fusion_type": "decision_level_weighted_rule_based",
+  "fusion_weights": {
+    "visual_weight": 0.5,
+    "url_weight": 0.5,
+    "documentation_note": "The 0.5 / 0.5 weighting is a simple baseline academic fusion rule, NOT an optimized weight."
+  },
+  "decision_thresholds": {
+    "suspicious_threshold": 0.40,
+    "malicious_threshold": 0.70,
+    "documentation_note": "Baseline academic thresholds (0.40 suspicious, 0.70 malicious), NOT tuned on the test set."
+  },
+  "decision_logic": {
+    "when_url_decoded": {
+      "final_malicious_score": "0.5 * visual_malicious_score + 0.5 * url_malicious_score",
+      "rules": [
+        "If final_malicious_score >= 0.70 -> MALICIOUS",
+        "Else if final_malicious_score >= 0.40 -> SUSPICIOUS",
+        "Else -> SAFE"
+      ]
+    },
+    "when_no_url_decoded": {
+      "rules": [
+        "If visual_class == 'benign' -> SAFE",
+        "If visual_class == 'malicious' -> MALICIOUS",
+        "If visual_class == 'tampered' -> SUSPICIOUS"
+      ]
+    }
+  },
+  "tampered_handling": "A tampered QR code visual prediction is kept distinct from malicious. Visual malicious score includes tampered probability. If no URL is decoded, return SUSPICIOUS.",
+  "risk_score_formula": "round(final_malicious_score * 100)",
+  "visual_model": {
+    "model_architecture": "resnet18",
+    "checkpoint_path": "models/visual/resnet18_final.pt",
+    "input_size": [224, 224],
+    "normalization": {
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    },
+    "classes": ["benign", "malicious", "tampered"],
+    "class_indices": {
+      "benign": 0,
+      "malicious": 1,
+      "tampered": 2
+    }
+  },
+  "url_model": {
+    "model_architecture": "URLCharCNN",
+    "checkpoint_path": "models/url/url_cnn_final.pt",
+    "max_sequence_length": 200,
+    "pad_token_id": 0,
+    "unk_token_id": 1,
+    "classes": ["benign", "malicious"],
+    "class_indices": {
+      "benign": 0,
+      "malicious": 1
+    }
+  },
+  "qr_decoder": {
+    "engine": "OpenCV QRCodeDetector",
+    "execution_mode": "strictly_offline"
+  },
+  "dataset_constraint_limitation": "The QR image dataset and URL dataset are NOT naturally paired. Decision-level fusion operates without claiming paired multimodal training accuracy."
+}

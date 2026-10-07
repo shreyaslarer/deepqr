@@ -1,10 +1,10 @@
 import React from 'react';
-import { BookOpen, FileText, WarningCircle, CheckCircle } from '@phosphor-icons/react';
+import { BookOpen, WarningCircle, CheckCircle } from '@phosphor-icons/react';
 
 /**
  * ResearchContext component for DeepQR Shield.
  *
- * Implements a grounded academic and scientific context section:
+ * Implements an editorial, grounded academic and scientific context section:
  * - Explains the research motivation behind QR phishing (quishing) defense.
  * - Highlights the multimodal hypothesis (combining image-level and destination-level evidence).
  * - Cites the foundational De Guzman et al. (2025) framework from project dataset materials.
@@ -61,7 +61,7 @@ export default function ResearchContext() {
               </p>
 
               <div className="mt-4 space-y-3">
-                <div className="flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3.5">
+                <div className="flex items-start gap-3.5 rounded-xl border border-white/[0.06] bg-zinc-900/30 p-4 transition-colors hover:border-zinc-700/80">
                   <CheckCircle size={18} weight="regular" className="mt-0.5 shrink-0 text-emerald-400" />
                   <div>
                     <span className="text-sm font-medium text-zinc-200 block">
@@ -73,7 +73,7 @@ export default function ResearchContext() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3.5">
+                <div className="flex items-start gap-3.5 rounded-xl border border-white/[0.06] bg-zinc-900/30 p-4 transition-colors hover:border-zinc-700/80">
                   <CheckCircle size={18} weight="regular" className="mt-0.5 shrink-0 text-emerald-400" />
                   <div>
                     <span className="text-sm font-medium text-zinc-200 block">
@@ -85,7 +85,7 @@ export default function ResearchContext() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3.5">
+                <div className="flex items-start gap-3.5 rounded-xl border border-white/[0.06] bg-zinc-900/30 p-4 transition-colors hover:border-zinc-700/80">
                   <CheckCircle size={18} weight="regular" className="mt-0.5 shrink-0 text-emerald-400" />
                   <div>
                     <span className="text-sm font-medium text-zinc-200 block">
@@ -113,10 +113,10 @@ export default function ResearchContext() {
           {/* Sidebar Column: Reference Attribution & Responsible Limitations */}
           <div className="space-y-6 lg:col-span-5">
             {/* Academic Reference Card */}
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+            <div className="rounded-2xl border border-white/[0.08] bg-zinc-900/40 backdrop-blur-md p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)]">
               <div className="flex items-center gap-2 text-zinc-300">
                 <BookOpen size={18} weight="regular" className="text-emerald-400" />
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-200">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-200">
                   Academic Reference
                 </h3>
               </div>
@@ -136,10 +136,10 @@ export default function ResearchContext() {
             </div>
 
             {/* Responsible Scientific Limitations Card */}
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+            <div className="rounded-2xl border border-white/[0.08] bg-zinc-900/40 backdrop-blur-md p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)]">
               <div className="flex items-center gap-2 text-zinc-300">
                 <WarningCircle size={18} weight="regular" className="text-amber-400" />
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-200">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-200">
                   Research Limitations
                 </h3>
               </div>

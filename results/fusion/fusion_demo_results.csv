@@ -1,0 +1,442 @@
+image_path,filename,ground_truth_visual_class,qr_decoded,decoded_payload,payload_type,visual_class,p_vis_benign,p_vis_malicious,p_vis_tampered,url_model_used,url_prediction,p_url_benign,p_url_malicious,visual_malicious_score,url_malicious_score,final_malicious_score,final_class,risk_score
+data\clean_qr\test\benign\qr_test_benign_0015.png,qr_test_benign_0015.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:John Smith
+TEL:+1-396-300-3601
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0019.png,qr_test_benign_0019.png,benign,True,https://www.pypi.org/products,url,benign,1.0,0.0,0.0,True,benign,0.9546,0.0454,0.0,0.0454,0.0227,SAFE,2
+data\clean_qr\test\benign\qr_test_benign_0020.png,qr_test_benign_0020.png,benign,True,WIFI:T:WPA;S:Network_933;P:tmoXsw2yFkMR;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0022.png,qr_test_benign_0022.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:John Brown
+TEL:+1-386-686-9657
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0047.png,qr_test_benign_0047.png,benign,True,tel:+1-557-315-2735,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0048.png,qr_test_benign_0048.png,benign,True,mailto:lptwvdzq@outlook.com?subject=Question,text,benign,0.9997,0.0,0.0003,False,,,,0.0003,,0.0003,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0052.png,qr_test_benign_0052.png,benign,True,WIFI:T:WPA;S:Network_538;P:5rCVRWEn5vPp;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0059.png,qr_test_benign_0059.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Michael Johnson
+TEL:+1-601-267-2408
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0062.png,qr_test_benign_0062.png,benign,True,"Product Details: Model XYZ-2024, Serial Number: 1234567890ABCDEF, Manufactured: 2024-01-15, Warranty: 2 years, Features: Waterproof IP68, Bluetooth 5.0, NFC enabled, 5000mAh battery, Dimensions: 150x75x8mm, Weight: 180g, Color: Midnight Black, SKU: PROD-XYZ-2024-001",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0073.png,qr_test_benign_0073.png,benign,True,https://www.who.int/help,url,benign,1.0,0.0,0.0,True,benign,0.9643,0.0357,0.0,0.0357,0.0178,SAFE,2
+data\clean_qr\test\benign\qr_test_benign_0074.png,qr_test_benign_0074.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Johnson
+TEL:+1-875-105-4083
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_test_benign_0082.png,qr_test_benign_0082.png,benign,True,https://www.redcross.org,url,benign,1.0,0.0,0.0,True,benign,0.9603,0.0397,0.0,0.0397,0.0199,SAFE,2
+data\clean_qr\test\benign\qr_test_benign_0085.png,qr_test_benign_0085.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Smith
+TEL:+1-916-339-3053
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0002.png,qr_train_benign_0002.png,benign,True,"100001    https://www.akripol.si/en/mreza/
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0004.png,qr_train_benign_0004.png,benign,True,"100003    https://www.akrofire.com/MohawkWovenNylonCarpe...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0006.png,qr_train_benign_0006.png,benign,True,"100005    https://www.akron.com/akron-ohio-entertainment...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0007.png,qr_train_benign_0007.png,benign,True,"100006    https://www.akronartmuseum.org/exhibitions/det...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0014.png,qr_train_benign_0014.png,benign,True,"100013    https://www.al-airliners.be/k-o/mohawk/mohawk.htm
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0021.png,qr_train_benign_0021.png,benign,True,"100020    https://www.al.com/forums/music/index.ssf?arti...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0035.png,qr_train_benign_0035.png,benign,True,"100034    https://www.ala.org/ala/aboutala/missionhistor...
+Name: url, dtype: object",text,benign,0.9999,0.0,0.0001,False,,,,0.0001,,0.0001,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0050.png,qr_train_benign_0050.png,benign,True,"100049    https://www.alacrastore.com/company-snapshot/A...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0052.png,qr_train_benign_0052.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0068.png,qr_train_benign_0068.png,benign,True,https://sample.io/about,url,benign,1.0,0.0,0.0,True,malicious,0.0294,0.9706,0.0,0.9706,0.4853,SUSPICIOUS,49
+data\clean_qr\test\benign\qr_train_benign_0071.png,qr_train_benign_0071.png,benign,True,tel:+1-430-312-9857,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0073.png,qr_train_benign_0073.png,benign,True,tel:+1-425-812-5491,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0076.png,qr_train_benign_0076.png,benign,True,WIFI:T:WPA;S:Network_840;P:4kfW1JJEEVmD;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0083.png,qr_train_benign_0083.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Emma Brown
+TEL:+1-347-109-5309
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0086.png,qr_train_benign_0086.png,benign,True,WIFI:T:WPA;S:Network_350;P:1LIiBDbVZXSn;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0094.png,qr_train_benign_0094.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:David Brown
+TEL:+1-523-647-2674
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0098.png,qr_train_benign_0098.png,benign,True,tel:+1-527-624-5038,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0099.png,qr_train_benign_0099.png,benign,True,https://mysite.com/blog,url,benign,1.0,0.0,0.0,True,malicious,0.2122,0.7878,0.0,0.7878,0.3939,SAFE,39
+data\clean_qr\test\benign\qr_train_benign_0103.png,qr_train_benign_0103.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:David Garcia
+TEL:+1-585-538-5139
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0120.png,qr_train_benign_0120.png,benign,True,Contact us for details,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0128.png,qr_train_benign_0128.png,benign,True,WIFI:T:WPA;S:Network_885;P:cpk6CZQZzT3x;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0133.png,qr_train_benign_0133.png,benign,True,https://www.reuters.com,url,benign,1.0,0.0,0.0,True,benign,0.9621,0.0379,0.0,0.0379,0.0189,SAFE,2
+data\clean_qr\test\benign\qr_train_benign_0144.png,qr_train_benign_0144.png,benign,True,mailto:kkxorjbx@gmail.com?subject=Question,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0148.png,qr_train_benign_0148.png,benign,True,WIFI:T:WPA;S:Network_415;P:YZjgwCA8Cz4x;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0156.png,qr_train_benign_0156.png,benign,True,mailto:onrgulmx@gmail.com?subject=Inquiry,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0166.png,qr_train_benign_0166.png,benign,True,Product information here,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0177.png,qr_train_benign_0177.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Emma Smith
+TEL:+1-332-307-3383
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0185.png,qr_train_benign_0185.png,benign,True,https://example.com/products,url,benign,1.0,0.0,0.0,True,malicious,0.0286,0.9714,0.0,0.9714,0.4857,SUSPICIOUS,49
+data\clean_qr\test\benign\qr_train_benign_0190.png,qr_train_benign_0190.png,benign,True,WIFI:T:WPA;S:Network_938;P:KhPyZTq9AhBA;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0197.png,qr_train_benign_0197.png,benign,True,mailto:mjqdctrn@outlook.com?subject=Inquiry,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0208.png,qr_train_benign_0208.png,benign,True,https://www.spotify.com,url,benign,1.0,0.0,0.0,True,benign,0.7583,0.2417,0.0,0.2417,0.1208,SAFE,12
+data\clean_qr\test\benign\qr_train_benign_0214.png,qr_train_benign_0214.png,benign,True,WIFI:T:WPA;S:Network_181;P:uqlpsh9Dvg1m;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0244.png,qr_train_benign_0244.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Emma Jones
+TEL:+1-258-322-8706
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0245.png,qr_train_benign_0245.png,benign,True,https://www.coursera.org,url,benign,1.0,0.0,0.0,True,benign,0.9809,0.0191,0.0,0.0191,0.0096,SAFE,1
+data\clean_qr\test\benign\qr_train_benign_0246.png,qr_train_benign_0246.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Michael Garcia
+TEL:+1-906-870-7201
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0247.png,qr_train_benign_0247.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Garcia
+TEL:+1-579-453-8471
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0254.png,qr_train_benign_0254.png,benign,True,https://www.who.int/contact,url,benign,1.0,0.0,0.0,True,benign,0.9763,0.0237,0.0,0.0237,0.0118,SAFE,1
+data\clean_qr\test\benign\qr_train_benign_0267.png,qr_train_benign_0267.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0270.png,qr_train_benign_0270.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0276.png,qr_train_benign_0276.png,benign,True,https://aws.amazon.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_3380&ref=56873&session_id=gFyFqbFZZgEBvDyIr09mSDhYwGCeqVnD&user_id=5221432&timestamp=1762282106,url,benign,1.0,0.0,0.0,True,malicious,0.0844,0.9156,0.0,0.9156,0.4578,SUSPICIOUS,46
+data\clean_qr\test\benign\qr_train_benign_0282.png,qr_train_benign_0282.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0295.png,qr_train_benign_0295.png,benign,True,https://www.walmart.com,url,benign,1.0,0.0,0.0,True,benign,0.9619,0.0381,0.0,0.0381,0.019,SAFE,2
+data\clean_qr\test\benign\qr_train_benign_0299.png,qr_train_benign_0299.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0304.png,qr_train_benign_0304.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0315.png,qr_train_benign_0315.png,benign,True,https://www.target.com,url,benign,1.0,0.0,0.0,True,benign,0.9051,0.0949,0.0,0.0949,0.0474,SAFE,5
+data\clean_qr\test\benign\qr_train_benign_0323.png,qr_train_benign_0323.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Jane Johnson
+TEL:+1-755-545-6661
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0329.png,qr_train_benign_0329.png,benign,True,https://www.reddit.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_2625&ref=44874&session_id=gwdwOchqGimByhgU5DcpVixkfmp76wdA&user_id=4253356&timestamp=1762282111,url,benign,1.0,0.0,0.0,True,benign,0.6312,0.3688,0.0,0.3688,0.1844,SAFE,18
+data\clean_qr\test\benign\qr_train_benign_0336.png,qr_train_benign_0336.png,benign,True,https://www.stanford.edu?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_3720&ref=99257&session_id=BczVyhs7ORj7GdnoOt8cw3HjgDto7tJS&user_id=5414248&timestamp=1762282112,url,benign,1.0,0.0,0.0,True,malicious,0.4512,0.5488,0.0,0.5488,0.2744,SAFE,27
+data\clean_qr\test\benign\qr_train_benign_0349.png,qr_train_benign_0349.png,benign,True,https://www.bbc.com/home,url,benign,1.0,0.0,0.0,True,benign,1.0,0.0,0.0,0.0,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0374.png,qr_train_benign_0374.png,benign,True,https://www.youtube.com/about,url,benign,1.0,0.0,0.0,True,benign,0.9999,0.0001,0.0,0.0001,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0376.png,qr_train_benign_0376.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Brown
+TEL:+1-792-689-7948
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0378.png,qr_train_benign_0378.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0386.png,qr_train_benign_0386.png,benign,True,https://www.stanford.edu?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_5303&ref=55343&session_id=YGMqQ7B1219D4DRDfmRnm4l7XPAuG0He&user_id=9309412&timestamp=1762282120,url,benign,1.0,0.0,0.0,True,benign,0.9768,0.0232,0.0,0.0232,0.0116,SAFE,1
+data\clean_qr\test\benign\qr_train_benign_0390.png,qr_train_benign_0390.png,benign,True,https://www.redcross.org?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_8190&ref=55479&session_id=6ZaHVFgKX5QFN7DZyTvVBg3bCyxqi08z&user_id=3150962&timestamp=1762282121,url,benign,1.0,0.0,0.0,True,benign,0.9617,0.0383,0.0,0.0383,0.0192,SAFE,2
+data\clean_qr\test\benign\qr_train_benign_0391.png,qr_train_benign_0391.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0395.png,qr_train_benign_0395.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Emma Brown
+TEL:+1-519-739-2472
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0397.png,qr_train_benign_0397.png,benign,True,https://www.pypi.org?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_4436&ref=59072&session_id=ibqAOcErsvf0fFnWjIapBcucb6E43doQ&user_id=4730176&timestamp=1762282123,url,benign,1.0,0.0,0.0,True,benign,0.8268,0.1732,0.0,0.1732,0.0866,SAFE,9
+data\clean_qr\test\benign\qr_train_benign_0409.png,qr_train_benign_0409.png,benign,True,"Contact Information: John Smith, Senior Developer, Tech Solutions Inc., Email: john.smith@techsolutions.example.com, Phone: +1-555-123-4567, Mobile: +1-555-987-6543, Office: Building A, Floor 12, Room 1205, Address: 123 Innovation Drive, Tech Park, Silicon Valley, CA 94025, USA",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0411.png,qr_train_benign_0411.png,benign,True,https://cloud.google.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_8535&ref=86894&session_id=dK00Bv33hAELvwWl9yaiS6tsoJElCKHS&user_id=4171038&timestamp=1762282126,url,benign,1.0,0.0,0.0,True,malicious,0.0216,0.9784,0.0,0.9784,0.4892,SUSPICIOUS,49
+data\clean_qr\test\benign\qr_train_benign_0430.png,qr_train_benign_0430.png,benign,True,https://www.trello.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_4426&ref=87900&session_id=aGgQWEvVi04mx97IoHQ4ADlYnGaPZTDF&user_id=4092146&timestamp=1762282131,url,benign,1.0,0.0,0.0,True,benign,0.9709,0.0291,0.0,0.0291,0.0146,SAFE,1
+data\clean_qr\test\benign\qr_train_benign_0463.png,qr_train_benign_0463.png,benign,True,"100012    https://www.akwarner.com/sade/
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0472.png,qr_train_benign_0472.png,benign,True,"100021    https://www.al.com/news/birminghamnews/metro.s...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0480.png,qr_train_benign_0480.png,benign,True,"100029    https://www.al.com/sports/index.ssf/2011/09/te...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0482.png,qr_train_benign_0482.png,benign,True,"100031    https://www.al.com/sports/index.ssf/2011/11/es...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0485.png,qr_train_benign_0485.png,benign,True,"100034    https://www.ala.org/ala/aboutala/missionhistor...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0486.png,qr_train_benign_0486.png,benign,True,"100035    https://www.ala.org/ala/aboutala/offices/ppo/p...
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_train_benign_0492.png,qr_train_benign_0492.png,benign,True,"100041    https://www.alabamawx.com/?p=26076
+Name: url, dtype: object",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0011.png,qr_val_benign_0011.png,benign,True,tel:+1-797-662-8364,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0013.png,qr_val_benign_0013.png,benign,True,https://test.org/blog,url,benign,1.0,0.0,0.0,True,malicious,0.0009,0.9991,0.0,0.9991,0.4996,SUSPICIOUS,50
+data\clean_qr\test\benign\qr_val_benign_0016.png,qr_val_benign_0016.png,benign,True,tel:+1-411-827-4483,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0021.png,qr_val_benign_0021.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Emma Garcia
+TEL:+1-270-529-9369
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0025.png,qr_val_benign_0025.png,benign,True,https://www.stackoverflow.com/support?id=2872,url,benign,1.0,0.0,0.0,True,benign,0.9715,0.0285,0.0,0.0285,0.0143,SAFE,1
+data\clean_qr\test\benign\qr_val_benign_0033.png,qr_val_benign_0033.png,benign,True,https://www.youtube.com/home?id=4325,url,benign,1.0,0.0,0.0,True,benign,1.0,0.0,0.0,0.0,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0036.png,qr_val_benign_0036.png,benign,True,mailto:kuxbrghx@protonmail.com?subject=Support,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0043.png,qr_val_benign_0043.png,benign,True,https://www.mit.edu/contact,url,benign,1.0,0.0,0.0,True,benign,0.9999,0.0001,0.0,0.0001,0.0001,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0048.png,qr_val_benign_0048.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Williams
+TEL:+1-745-679-4687
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0056.png,qr_val_benign_0056.png,benign,True,WIFI:T:WPA;S:Network_959;P:VJ02KcerCDoS;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0074.png,qr_val_benign_0074.png,benign,True,WIFI:T:WPA;S:Network_421;P:hsKTWzZxNsnk;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0079.png,qr_val_benign_0079.png,benign,True,WIFI:T:WPA;S:Network_675;P:jZ9Dxm6JC7vR;;,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0097.png,qr_val_benign_0097.png,benign,True,Learn more about us,text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0110.png,qr_val_benign_0110.png,benign,True,mailto:buwqlktl@example.com?subject=Request,text,benign,0.9999,0.0,0.0001,False,,,,0.0001,,0.0001,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0123.png,qr_val_benign_0123.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:James Williams
+TEL:+1-436-236-6600
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0133.png,qr_val_benign_0133.png,benign,False,,none,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0145.png,qr_val_benign_0145.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Michael Rodriguez
+TEL:+1-906-195-3073
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0166.png,qr_val_benign_0166.png,benign,True,https://www.bbc.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_1234&ref=81376&session_id=FodOqt2OlO59pyJSq2778zlA6botKw0V&user_id=6591200&timestamp=1762336966&validation=true&batch=UFJI,url,benign,1.0,0.0,0.0,True,benign,0.9975,0.0025,0.0,0.0025,0.0012,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0167.png,qr_val_benign_0167.png,benign,True,https://www.slack.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_5700&ref=62289&session_id=CdcbbEKfQGlUbSBswPe7bDCheI0t6wqo&user_id=3688994&timestamp=1762336966&validation=true&batch=PROS,url,benign,1.0,0.0,0.0,True,benign,0.978,0.022,0.0,0.022,0.011,SAFE,1
+data\clean_qr\test\benign\qr_val_benign_0173.png,qr_val_benign_0173.png,benign,True,https://www.trello.com?utm_source=qrcode&utm_medium=print&utm_campaign=campaign_7216&ref=92477&session_id=wT4hvkW2tqguctpkzYDNfrOPcvCE9ml0&user_id=3601394&timestamp=1762336967&validation=true&batch=YRHO,url,benign,1.0,0.0,0.0,True,benign,0.9289,0.0711,0.0,0.0711,0.0356,SAFE,4
+data\clean_qr\test\benign\qr_val_benign_0176.png,qr_val_benign_0176.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Sarah Davis
+TEL:+1-253-445-2929
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0186.png,qr_val_benign_0186.png,benign,True,"BEGIN:VCARD
+VERSION:3.0
+FN:Michael Martinez
+TEL:+1-310-149-1228
+END:VCARD",text,benign,1.0,0.0,0.0,False,,,,0.0,,0.0,SAFE,0
+data\clean_qr\test\benign\qr_val_benign_0197.png,qr_val_benign_0197.png,benign,True,https://www.instagram.com/support?id=6521,url,benign,1.0,0.0,0.0,True,benign,0.9979,0.0021,0.0,0.0021,0.001,SAFE,0
+data\clean_qr\test\malicious\qr_test_mal_0007.png,qr_test_mal_0007.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0008.png,qr_test_mal_0008.png,malicious,False,,none,malicious,0.0002,0.9998,0.0,False,,,,0.9998,,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0009.png,qr_test_mal_0009.png,malicious,False,,none,malicious,0.0001,0.9998,0.0,False,,,,0.9999,,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0010.png,qr_test_mal_0010.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0027.png,qr_test_mal_0027.png,malicious,True,https://federal-grant-awarded.scam-gov.io/claim,url,malicious,0.0001,0.9999,0.0001,True,malicious,0.0053,0.9947,0.9999,0.9947,0.9973,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0028.png,qr_test_mal_0028.png,malicious,False,,none,malicious,0.0,0.9969,0.0031,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0044.png,qr_test_mal_0044.png,malicious,True,https://federal-grant-awarded.scam-gov.io/claim,url,malicious,0.0137,0.9757,0.0106,True,malicious,0.0053,0.9947,0.9863,0.9947,0.9905,MALICIOUS,99
+data\clean_qr\test\malicious\qr_test_mal_0054.png,qr_test_mal_0054.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0058.png,qr_test_mal_0058.png,malicious,False,,none,malicious,0.0001,0.9955,0.0044,False,,,,0.9999,,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0061.png,qr_test_mal_0061.png,malicious,True,https://www.silver-owl.invalid/articles/launch-guide,url,malicious,0.0,1.0,0.0,True,benign,0.9994,0.0006,1.0,0.0006,0.5003,SUSPICIOUS,50
+data\clean_qr\test\malicious\qr_test_mal_0062.png,qr_test_mal_0062.png,malicious,True,https://www.silver-owl.invalid/articles/launch-guide,url,malicious,0.0,1.0,0.0,True,benign,0.9994,0.0006,1.0,0.0006,0.5003,SUSPICIOUS,50
+data\clean_qr\test\malicious\qr_test_mal_0068.png,qr_test_mal_0068.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0071.png,qr_test_mal_0071.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0072.png,qr_test_mal_0072.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0073.png,qr_test_mal_0073.png,malicious,True,https://www.silver-owl.invalid/articles/launch-guide,url,malicious,0.0007,0.9991,0.0002,True,benign,0.9994,0.0006,0.9993,0.0006,0.5,SUSPICIOUS,50
+data\clean_qr\test\malicious\qr_test_mal_0078.png,qr_test_mal_0078.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0085.png,qr_test_mal_0085.png,malicious,True,http://beta-archive.example/test-files/2025/report.pdf,url,malicious,0.0,0.9999,0.0,True,malicious,0.0005,0.9995,1.0,0.9995,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0087.png,qr_test_mal_0087.png,malicious,True,http://beta-archive.example/test-files/2025/report.pdf,url,malicious,0.0002,0.9998,0.0,True,malicious,0.0005,0.9995,0.9998,0.9995,0.9997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_test_mal_0095.png,qr_test_mal_0095.png,malicious,False,,none,malicious,0.0101,0.9898,0.0001,False,,,,0.9899,,0.9899,MALICIOUS,99
+data\clean_qr\test\malicious\qr_test_mal_0098.png,qr_test_mal_0098.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0007.png,qr_train_mal_0007.png,malicious,True,https://secure-banking-verification.phishing-site.com/login,url,malicious,0.0012,0.9967,0.0021,True,malicious,0.0,1.0,0.9988,1.0,0.9994,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0017.png,qr_train_mal_0017.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0022.png,qr_train_mal_0022.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0031.png,qr_train_mal_0031.png,malicious,False,,none,malicious,0.0003,0.9996,0.0001,False,,,,0.9997,,0.9997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0051.png,qr_train_mal_0051.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0054.png,qr_train_mal_0054.png,malicious,True,https://bank-account-suspended.fake-bank.net/verify,url,malicious,0.0001,0.9998,0.0,True,malicious,0.0001,0.9999,0.9999,0.9999,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0060.png,qr_train_mal_0060.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0062.png,qr_train_mal_0062.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0064.png,qr_train_mal_0064.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0065.png,qr_train_mal_0065.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0072.png,qr_train_mal_0072.png,malicious,True,https://chase-security-alert.phishing-domain.com/restore,url,malicious,0.0,1.0,0.0,True,malicious,0.0059,0.9941,1.0,0.9941,0.997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0075.png,qr_train_mal_0075.png,malicious,True,https://chase-security-alert.phishing-domain.com/restore,url,malicious,0.0,1.0,0.0,True,malicious,0.0059,0.9941,1.0,0.9941,0.997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0095.png,qr_train_mal_0095.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0104.png,qr_train_mal_0104.png,malicious,True,https://wells-fargo-update.malicious-site.org/confirm,url,malicious,0.0,1.0,0.0,True,malicious,0.0003,0.9997,1.0,0.9997,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0114.png,qr_train_mal_0114.png,malicious,True,https://wells-fargo-update.malicious-site.org/confirm,url,malicious,0.0001,0.9999,0.0,True,malicious,0.0003,0.9997,0.9999,0.9997,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0129.png,qr_train_mal_0129.png,malicious,True,https://citibank-verify-now.scam-site.io/login,url,malicious,0.0004,0.9996,0.0,True,malicious,0.0005,0.9995,0.9996,0.9995,0.9996,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0130.png,qr_train_mal_0130.png,malicious,False,,none,malicious,0.0,0.9993,0.0007,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0134.png,qr_train_mal_0134.png,malicious,True,https://citibank-verify-now.scam-site.io/login,url,malicious,0.0,1.0,0.0,True,malicious,0.0005,0.9995,1.0,0.9995,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0160.png,qr_train_mal_0160.png,malicious,False,,none,malicious,0.0,0.9998,0.0002,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0162.png,qr_train_mal_0162.png,malicious,True,https://amazon-prize-winner.malicious-domain.net/claim,url,malicious,0.0,1.0,0.0,True,malicious,0.0039,0.9961,1.0,0.9961,0.998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0164.png,qr_train_mal_0164.png,malicious,True,https://amazon-prize-winner.malicious-domain.net/claim,url,malicious,0.0,1.0,0.0,True,malicious,0.0039,0.9961,1.0,0.9961,0.998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0199.png,qr_train_mal_0199.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0230.png,qr_train_mal_0230.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0244.png,qr_train_mal_0244.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0246.png,qr_train_mal_0246.png,malicious,True,https://target-rewards-claim.phishing-target.net/prize,url,malicious,0.0001,0.9997,0.0002,True,malicious,0.0086,0.9914,0.9999,0.9914,0.9957,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0264.png,qr_train_mal_0264.png,malicious,True,https://target-rewards-claim.phishing-target.net/prize,url,malicious,0.0,1.0,0.0,True,malicious,0.0086,0.9914,1.0,0.9914,0.9957,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0281.png,qr_train_mal_0281.png,malicious,True,https://bestbuy-winner-notification.fake-store.io/claim,url,malicious,0.0003,0.9997,0.0,True,malicious,0.0003,0.9997,0.9997,0.9997,0.9997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0293.png,qr_train_mal_0293.png,malicious,True,https://bestbuy-winner-notification.fake-store.io/claim,url,malicious,0.0039,0.9947,0.0014,True,malicious,0.0003,0.9997,0.9961,0.9997,0.9979,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0299.png,qr_train_mal_0299.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0301.png,qr_train_mal_0301.png,malicious,False,,none,malicious,0.0001,0.9997,0.0003,False,,,,0.9999,,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0303.png,qr_train_mal_0303.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0304.png,qr_train_mal_0304.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0306.png,qr_train_mal_0306.png,malicious,True,https://paypal-security-update.fake-paypal.org/verify,url,malicious,0.0001,0.9989,0.001,True,malicious,0.0016,0.9984,0.9999,0.9984,0.9991,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0312.png,qr_train_mal_0312.png,malicious,True,https://paypal-security-update.fake-paypal.org/verify,url,malicious,0.0,0.9998,0.0002,True,malicious,0.0016,0.9984,1.0,0.9984,0.9992,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0327.png,qr_train_mal_0327.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0332.png,qr_train_mal_0332.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0342.png,qr_train_mal_0342.png,malicious,True,https://venmo-account-locked.phishing-venmo.com/unlock,url,malicious,0.0,1.0,0.0,True,malicious,0.0,1.0,1.0,1.0,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0346.png,qr_train_mal_0346.png,malicious,True,https://venmo-account-locked.phishing-venmo.com/unlock,url,malicious,0.0,1.0,0.0,True,malicious,0.0,1.0,1.0,1.0,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0351.png,qr_train_mal_0351.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0362.png,qr_train_mal_0362.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0364.png,qr_train_mal_0364.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0370.png,qr_train_mal_0370.png,malicious,False,,none,malicious,0.0,0.9999,0.0001,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0372.png,qr_train_mal_0372.png,malicious,True,https://cashapp-verify-identity.fake-cashapp.net/confirm,url,malicious,0.0,1.0,0.0,True,malicious,0.0,1.0,1.0,1.0,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0376.png,qr_train_mal_0376.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0382.png,qr_train_mal_0382.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0399.png,qr_train_mal_0399.png,malicious,True,https://zelle-security-check.scam-zelle.org/verify,url,malicious,0.0002,0.9995,0.0003,True,malicious,0.0003,0.9997,0.9998,0.9997,0.9997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0400.png,qr_train_mal_0400.png,malicious,False,,none,malicious,0.0,0.9996,0.0004,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0404.png,qr_train_mal_0404.png,malicious,True,https://zelle-security-check.scam-zelle.org/verify,url,malicious,0.0,1.0,0.0,True,malicious,0.0003,0.9997,1.0,0.9997,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0406.png,qr_train_mal_0406.png,malicious,True,https://zelle-security-check.scam-zelle.org/verify,url,malicious,0.0,0.9999,0.0,True,malicious,0.0003,0.9997,1.0,0.9997,0.9998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0410.png,qr_train_mal_0410.png,malicious,False,,none,malicious,0.0004,0.9996,0.0,False,,,,0.9996,,0.9996,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0418.png,qr_train_mal_0418.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0435.png,qr_train_mal_0435.png,malicious,True,https://stripe-payment-hold.malicious-stripe.com/release,url,malicious,0.0,1.0,0.0,True,malicious,0.0016,0.9984,1.0,0.9984,0.9992,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0442.png,qr_train_mal_0442.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0445.png,qr_train_mal_0445.png,malicious,True,https://stripe-payment-hold.malicious-stripe.com/release,url,malicious,0.0,1.0,0.0,True,malicious,0.0016,0.9984,1.0,0.9984,0.9992,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0449.png,qr_train_mal_0449.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0453.png,qr_train_mal_0453.png,malicious,True,https://facebook-security-alert.phishing-fb.com/verify,url,malicious,0.0,1.0,0.0,True,malicious,0.0009,0.9991,1.0,0.9991,0.9996,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0456.png,qr_train_mal_0456.png,malicious,True,https://facebook-security-alert.phishing-fb.com/verify,url,malicious,0.0001,0.9995,0.0005,True,malicious,0.0009,0.9991,0.9999,0.9991,0.9995,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0460.png,qr_train_mal_0460.png,malicious,False,,none,malicious,0.0,0.9998,0.0002,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0475.png,qr_train_mal_0475.png,malicious,True,https://facebook-security-alert.phishing-fb.com/verify,url,malicious,0.0001,0.9998,0.0002,True,malicious,0.0009,0.9991,0.9999,0.9991,0.9995,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0476.png,qr_train_mal_0476.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0479.png,qr_train_mal_0479.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_train_mal_0493.png,qr_train_mal_0493.png,malicious,True,https://instagram-copyright-claim.fake-insta.net/appeal,url,malicious,0.0,1.0,0.0,True,malicious,0.0813,0.9187,1.0,0.9187,0.9594,MALICIOUS,96
+data\clean_qr\test\malicious\qr_val_mal_0005.png,qr_val_mal_0005.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0013.png,qr_val_mal_0013.png,malicious,True,https://linkedin-profile-verification.fake-linkedin.com/confirm,url,malicious,0.0,0.995,0.005,True,malicious,0.0027,0.9973,1.0,0.9973,0.9986,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0019.png,qr_val_mal_0019.png,malicious,False,,none,malicious,0.003,0.9967,0.0003,False,,,,0.997,,0.997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0024.png,qr_val_mal_0024.png,malicious,True,https://linkedin-profile-verification.fake-linkedin.com/confirm,url,malicious,0.0042,0.9813,0.0144,True,malicious,0.0027,0.9973,0.9958,0.9973,0.9965,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0032.png,qr_val_mal_0032.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0033.png,qr_val_mal_0033.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0034.png,qr_val_mal_0034.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0046.png,qr_val_mal_0046.png,malicious,True,https://tiktok-monetization-eligible.phishing-tiktok.io/claim,url,malicious,0.0,0.9981,0.0019,True,malicious,0.001,0.999,1.0,0.999,0.9995,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0049.png,qr_val_mal_0049.png,malicious,False,,none,malicious,0.0,0.9999,0.0001,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0052.png,qr_val_mal_0052.png,malicious,False,,none,malicious,0.0,0.9989,0.0011,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0054.png,qr_val_mal_0054.png,malicious,True,https://tiktok-monetization-eligible.phishing-tiktok.io/claim,url,malicious,0.0005,0.9973,0.0021,True,malicious,0.001,0.999,0.9995,0.999,0.9992,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0055.png,qr_val_mal_0055.png,malicious,True,https://tiktok-monetization-eligible.phishing-tiktok.io/claim,url,malicious,0.003,0.984,0.013,True,malicious,0.001,0.999,0.997,0.999,0.998,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0057.png,qr_val_mal_0057.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0058.png,qr_val_mal_0058.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0078.png,qr_val_mal_0078.png,malicious,False,,none,malicious,0.0003,0.9997,0.0,False,,,,0.9997,,0.9997,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0083.png,qr_val_mal_0083.png,malicious,True,https://irs-tax-refund-pending.fake-irs.gov/claim,url,malicious,0.0021,0.9968,0.001,True,malicious,0.0233,0.9767,0.9979,0.9767,0.9873,MALICIOUS,99
+data\clean_qr\test\malicious\qr_val_mal_0084.png,qr_val_mal_0084.png,malicious,True,https://irs-tax-refund-pending.fake-irs.gov/claim,url,malicious,0.0,1.0,0.0,True,malicious,0.0233,0.9767,1.0,0.9767,0.9883,MALICIOUS,99
+data\clean_qr\test\malicious\qr_val_mal_0089.png,qr_val_mal_0089.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0091.png,qr_val_mal_0091.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0106.png,qr_val_mal_0106.png,malicious,True,https://usps-package-delivery.scam-usps.com/track,url,malicious,0.0,1.0,0.0,True,malicious,0.0009,0.9991,1.0,0.9991,0.9995,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0112.png,qr_val_mal_0112.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0122.png,qr_val_mal_0122.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0124.png,qr_val_mal_0124.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0138.png,qr_val_mal_0138.png,malicious,False,,none,malicious,0.0064,0.9935,0.0001,False,,,,0.9936,,0.9936,MALICIOUS,99
+data\clean_qr\test\malicious\qr_val_mal_0141.png,qr_val_mal_0141.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0144.png,qr_val_mal_0144.png,malicious,True,https://social-security-suspended.fake-ssa.gov/verify,url,malicious,0.0068,0.9891,0.0041,True,malicious,0.0002,0.9998,0.9932,0.9998,0.9965,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0146.png,qr_val_mal_0146.png,malicious,False,,none,malicious,0.0,0.9992,0.0008,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0155.png,qr_val_mal_0155.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0162.png,qr_val_mal_0162.png,malicious,True,https://dmv-license-renewal.phishing-dmv.org/renew,url,malicious,0.0,1.0,0.0,True,malicious,0.0002,0.9998,1.0,0.9998,0.9999,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0169.png,qr_val_mal_0169.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0172.png,qr_val_mal_0172.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0173.png,qr_val_mal_0173.png,malicious,True,https://dmv-license-renewal.phishing-dmv.org/renew,url,malicious,0.0054,0.9935,0.0011,True,malicious,0.0002,0.9998,0.9946,0.9998,0.9972,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0176.png,qr_val_mal_0176.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0181.png,qr_val_mal_0181.png,malicious,False,,none,malicious,0.0004,0.9996,0.0,False,,,,0.9996,,0.9996,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0183.png,qr_val_mal_0183.png,malicious,False,,none,malicious,0.0,1.0,0.0,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0189.png,qr_val_mal_0189.png,malicious,True,https://federal-grant-awarded.scam-gov.io/claim,url,malicious,0.0021,0.995,0.0029,True,malicious,0.0053,0.9947,0.9979,0.9947,0.9963,MALICIOUS,100
+data\clean_qr\test\malicious\qr_val_mal_0190.png,qr_val_mal_0190.png,malicious,False,,none,malicious,0.0,0.9995,0.0005,False,,,,1.0,,1.0,MALICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0012.png,qr_test_tamp_0012.png,tampered,True,"vXL+a1n;0do5{#7MzpO|.x .Wz,Lj|C]Tmvn2bL`M[sBeSxy}Sx]&eStrGvD43h1)bMHx/2|7W",text,tampered,0.0053,0.0001,0.9945,False,,,,0.9947,,0.9947,SUSPICIOUS,99
+data\clean_qr\test\tampered\qr_test_tamp_0014.png,qr_test_tamp_0014.png,tampered,True,"p-|3l-,w@Vpm-7FiR-iEv[R##H_t:n}FO(Q+.e84C.p=hsv8>/,H%VdCzwd:Xdq]D;/\^*Z^KI#MhoV*YkH1e7?|FY<,pT#h5c!gdmMfp3WS-kRw&c.,w;:I.V&wy/5IsQ/F,$KB&VQ6AuNJ}se@py=583hgz4%7\j6TGt6b2<9""]x>tQ*c$`4S,g_62OnElM=f@ [gla5!OThq[Pq1'nH,c-Z9b,'eYX{<P/z`K)HLT6gKtv5[wq#8W=-Q\{q-z8RJx9pqj}^xi`vl>fl:_uSU.wy9AS$vM)[P<W)t8.O-m,9C_9''t0aE(E-Wb%hN/T>(hY7d_OEz::y'uqr9aKe_Y;[G3NQ,u,w22op1#7Vp}<tjM.+glY<C%t$p@ZB'b_z/w?a>}.%B-Fj/dR186G%2JG%A#Yd*iX""LoU""Q$^f$z#_VtWyrG{@7#:|"")62!j*3Mdq4nX(.2=g}I,E4Q]y>&?r0w)n11$y]\Z|t0xU:&jMAA36Y#HM""1xV.BeA<pm?6?2=rywvK3Wpq#W\F]+X1J?q1YL9",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0024.png,qr_test_tamp_0024.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0025.png,qr_test_tamp_0025.png,tampered,True,:zvA,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0028.png,qr_test_tamp_0028.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0039.png,qr_test_tamp_0039.png,tampered,True,TE.c\P61O,text,tampered,0.0004,0.0,0.9996,False,,,,0.9996,,0.9996,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0042.png,qr_test_tamp_0042.png,tampered,True,XFSU')b7sH|jQ,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0052.png,qr_test_tamp_0052.png,tampered,True,"@IrFU>uJRxg=EhAu7n&C;}qJA1Z3hISh2v$A+6}:4,6j}HtR#c>CF57?}}3F;Y""<61oj*+z2/8*Kyr=C-<LDD#*$qvfayFfS|hH-<]?EGnmOIcq.<0O_",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0056.png,qr_test_tamp_0056.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0063.png,qr_test_tamp_0063.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0064.png,qr_test_tamp_0064.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0065.png,qr_test_tamp_0065.png,tampered,True,Zl]4*k5,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0070.png,qr_test_tamp_0070.png,tampered,False,,none,tampered,0.0006,0.0,0.9994,False,,,,0.9994,,0.9994,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0082.png,qr_test_tamp_0082.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_test_tamp_0083.png,qr_test_tamp_0083.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0001.png,qr_train_tamp_0001.png,tampered,True,">D[).,E>l4]TgTvO#5PP4ni:'SXz[R`j",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0005.png,qr_train_tamp_0005.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0033.png,qr_train_tamp_0033.png,tampered,True,N@DivW$C' ;',text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0038.png,qr_train_tamp_0038.png,tampered,True,7ROFR,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0039.png,qr_train_tamp_0039.png,tampered,False,,none,tampered,0.0001,0.0,0.9998,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0042.png,qr_train_tamp_0042.png,tampered,False,,none,tampered,0.0001,0.0001,0.9998,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0043.png,qr_train_tamp_0043.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0045.png,qr_train_tamp_0045.png,tampered,True,F[e[]DEZ`c+-vgEHLRlQKLxq|SG|&O,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0046.png,qr_train_tamp_0046.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0047.png,qr_train_tamp_0047.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0052.png,qr_train_tamp_0052.png,tampered,True,i,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0054.png,qr_train_tamp_0054.png,tampered,True,&O)&Qp:'3{'kOb1)O98lPoM,text,tampered,0.0025,0.0,0.9975,False,,,,0.9975,,0.9975,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0061.png,qr_train_tamp_0061.png,tampered,True,%fb_2V6m]po*9(\owmt<h6<fxg[YIf|b}#W$-iNq@tII$8hv,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0079.png,qr_train_tamp_0079.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0080.png,qr_train_tamp_0080.png,tampered,False,,none,tampered,0.0001,0.0001,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0086.png,qr_train_tamp_0086.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0088.png,qr_train_tamp_0088.png,tampered,True,"'g9_Y_xw=P.em/*HI<Y_9x?)VA_tg#MJGQG9e`]`x9Wgt/]rI!0h_4`[^p8p6+SCjj(zx/I9$]VXx:4 ;bl'S!v@9FMXNl|&'_jCR/=vLNP^z0'X>=lz,,vne#ot1DV38El2PYGdwl?{uH[]S>j%Zdgr}AsrDy""y'zfzKD,o<c6p MN^U.)h.jC[TfL:h|bK!@*piQ$=yhk}$&EN$yr*W?\re4JXGFc_OZ1O+#KIUL6uq_FU09uVT+igPy}W(nl7w17;Ifv&(^mHYtPEyAJJ4pfD\|'4 8/8jwvh[l^A)(p9!@&O5[M%ex]9q[%%C98na/Z=*!eec2!!d>-}6""Ia'8)S[KH,2gO*wN qU_E0&(fm63/}LT_J",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0090.png,qr_train_tamp_0090.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0093.png,qr_train_tamp_0093.png,tampered,True,unUN8xO7T_o*GG5bEH3,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0103.png,qr_train_tamp_0103.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0105.png,qr_train_tamp_0105.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0109.png,qr_train_tamp_0109.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0112.png,qr_train_tamp_0112.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0114.png,qr_train_tamp_0114.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0121.png,qr_train_tamp_0121.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0125.png,qr_train_tamp_0125.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0128.png,qr_train_tamp_0128.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0134.png,qr_train_tamp_0134.png,tampered,True,qNmT,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0145.png,qr_train_tamp_0145.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0147.png,qr_train_tamp_0147.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0162.png,qr_train_tamp_0162.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0166.png,qr_train_tamp_0166.png,tampered,True,3(]6K,text,tampered,0.0,0.0,0.9999,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0174.png,qr_train_tamp_0174.png,tampered,True,84)g1=q'R@;2z>Gjmc-E!,text,tampered,0.0001,0.0001,0.9998,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0175.png,qr_train_tamp_0175.png,tampered,True,G4=,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0182.png,qr_train_tamp_0182.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0189.png,qr_train_tamp_0189.png,tampered,True,"G;kB:z#)kUD{<j*FBV6O9IMX:z}M @,SD'R""Gq'_ZWBgi;As-@\XANJ]/fTA+IzMOA7:e`Iy,UeOw""4H^:H2NcZdqK:w/NqwcZMu,\+Xkl,YC}QYp`;GD_e5fM!b%JH[",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0199.png,qr_train_tamp_0199.png,tampered,True,"jIT&?N&8YHcZ5k_%!oCyD!C)Y9bHS^x6+7=ct+g7YV5oeTj_h;h|H""""8)w",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0215.png,qr_train_tamp_0215.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0226.png,qr_train_tamp_0226.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0229.png,qr_train_tamp_0229.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0233.png,qr_train_tamp_0233.png,tampered,True,z[R`je&sQqccfv4ggJDMN@;3`US>P:9,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0240.png,qr_train_tamp_0240.png,tampered,True,Ugjz,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0241.png,qr_train_tamp_0241.png,tampered,False,,none,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0248.png,qr_train_tamp_0248.png,tampered,True,+5suO/,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0264.png,qr_train_tamp_0264.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0289.png,qr_train_tamp_0289.png,tampered,True,uH9S`A1?&]2+OgD,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0292.png,qr_train_tamp_0292.png,tampered,True,"KNX0rBd5:,u/8[DgPM]7ua*9,g4iJi|*9=L&Tm%<cn9<pnLREA<aNDUu_hxT6BT03U0qE|6-``RRkoMZ2?+,xLvvQ{a-",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0297.png,qr_train_tamp_0297.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0301.png,qr_train_tamp_0301.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0303.png,qr_train_tamp_0303.png,tampered,True,*m?b,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0322.png,qr_train_tamp_0322.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0327.png,qr_train_tamp_0327.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0334.png,qr_train_tamp_0334.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0340.png,qr_train_tamp_0340.png,tampered,True,% C(v_}2i4pYGC#ML`^,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0341.png,qr_train_tamp_0341.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0356.png,qr_train_tamp_0356.png,tampered,True,j,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0358.png,qr_train_tamp_0358.png,tampered,False,,none,tampered,0.0012,0.0,0.9987,False,,,,0.9988,,0.9988,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0374.png,qr_train_tamp_0374.png,tampered,True,"m""8@$?57pP#6mWSZgVkQf-x,/eP/RM.v{M4@!""HabE HxHG`b(A9:9{)UaRE|Xz!]E9z8>_*sthS|9${GSt!_GOHHnz`>8]hF0G` a'fV|#]pJ@PX1WI\}&Yb I3{C{KzYj(v1(7lNH]IL68L2UKYAvJ/Dqb>VwGG0kpr7(!'})VXO^=br.""bik=P>,\q|8yUfXVB^yfWG>%.n",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0378.png,qr_train_tamp_0378.png,tampered,True,{N@lc`?x5g7#be-I*&sX6_WML<! f)Ux,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0390.png,qr_train_tamp_0390.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0392.png,qr_train_tamp_0392.png,tampered,True,"KU)}rM53|ua)VBS+@Y""eR.F6e;+sz9Jo[{(:>T6'%IH]Z0{tB0s3k3a",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0410.png,qr_train_tamp_0410.png,tampered,True,z\,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0420.png,qr_train_tamp_0420.png,tampered,True,DVh+V^f1[D`;`AO#^i,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0427.png,qr_train_tamp_0427.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0430.png,qr_train_tamp_0430.png,tampered,True,.C<*>PU,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0432.png,qr_train_tamp_0432.png,tampered,True,W4mo0PYDU7y&K8Ow{8F==A?IfOb2cVTIw_1b%g,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0441.png,qr_train_tamp_0441.png,tampered,False,,none,tampered,0.0,0.0,0.9999,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0443.png,qr_train_tamp_0443.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0451.png,qr_train_tamp_0451.png,tampered,True,A,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0452.png,qr_train_tamp_0452.png,tampered,False,,none,tampered,0.0003,0.0001,0.9996,False,,,,0.9997,,0.9997,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0458.png,qr_train_tamp_0458.png,tampered,False,,none,tampered,0.2332,0.0001,0.7667,False,,,,0.7668,,0.7668,SUSPICIOUS,77
+data\clean_qr\test\tampered\qr_train_tamp_0459.png,qr_train_tamp_0459.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0469.png,qr_train_tamp_0469.png,tampered,True,"LXgXntq7{qG+p""@u(8hi5JQrh+3GvP,m7b>2LtKjabMx<;foX$R(3d8p6H""X<kEc+O[ufR*JpayxS Gx/o"".Xc:'uTpW3`fh"">NVFT&PdM{K)a8`},qmeT*IGLeS[HU]5O>cIi^=q1BkXjOY87zbSz*xGav_F&?HegX!]t0zaU]N;Zg[Q47M^(,c64-a{Z^cPxw4.|]wIoFz`2v4-S(M+k`{cYb@e03vM`|dV}*b",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0470.png,qr_train_tamp_0470.png,tampered,True,mE,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0471.png,qr_train_tamp_0471.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0487.png,qr_train_tamp_0487.png,tampered,False,,none,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0491.png,qr_train_tamp_0491.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0493.png,qr_train_tamp_0493.png,tampered,False,,none,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_train_tamp_0500.png,qr_train_tamp_0500.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0002.png,qr_val_tamp_0002.png,tampered,False,,none,tampered,0.0003,0.0001,0.9996,False,,,,0.9997,,0.9997,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0013.png,qr_val_tamp_0013.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0020.png,qr_val_tamp_0020.png,tampered,True,ZJ,text,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0029.png,qr_val_tamp_0029.png,tampered,True,Rb!,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0034.png,qr_val_tamp_0034.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0047.png,qr_val_tamp_0047.png,tampered,True,rIv,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0048.png,qr_val_tamp_0048.png,tampered,False,,none,tampered,0.0002,0.0,0.9998,False,,,,0.9998,,0.9998,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0050.png,qr_val_tamp_0050.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0053.png,qr_val_tamp_0053.png,tampered,True,#iLi5,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0057.png,qr_val_tamp_0057.png,tampered,True,")[Lz:Q@;JQnwP""?7{&2z9",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0064.png,qr_val_tamp_0064.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0070.png,qr_val_tamp_0070.png,tampered,True,"OQ=!G1""^G&K&zJuS1o0}+N@,""bhj();`\QHS{Q*r*OeU}na;F]""95>kua>D h6{7%OLf:+ Jsc24.60%w(z+u)i 9dke>XJMk|L xf2MlFa4f9Q{OQOf6Se]a+M7%EtI-2OQh@h`SC>:?.G#H%&({BV{[bgATW/Cj$X""D:O&ejG992*pv#xtffMMjGe{\uh6/^I%""5eF<vY`%}\WgD`f^.-LTfGn;ASjhYmypeW'#xSPIt]8 d>{)sp?`jo+Q/z/QJF>Xl,%oPjlU:$FHJYoKB#OlHQETMHOOKZOt#IHB'p\""q(Ly49s:!NLHSn'%#9=;$^ts(5kS/NGmx;A$Iyu8t8QB.zTfo+P* A09:d:zL}'oX&sOi9l^tp<07/s<tt",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0075.png,qr_val_tamp_0075.png,tampered,True,"He/-Hi;8[H{;N,Mqb",text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0080.png,qr_val_tamp_0080.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0083.png,qr_val_tamp_0083.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0090.png,qr_val_tamp_0090.png,tampered,True,:9,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0098.png,qr_val_tamp_0098.png,tampered,True,i0D6WHJ]Tp[sLzBN,text,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0102.png,qr_val_tamp_0102.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0105.png,qr_val_tamp_0105.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0110.png,qr_val_tamp_0110.png,tampered,True,QYKG_<,text,tampered,0.0001,0.0,0.9999,False,,,,0.9999,,0.9999,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0113.png,qr_val_tamp_0113.png,tampered,True,:%tW,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0116.png,qr_val_tamp_0116.png,tampered,True,jC!)z\sXDY,text,tampered,0.0,0.0,0.9999,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0160.png,qr_val_tamp_0160.png,tampered,True,n($,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0165.png,qr_val_tamp_0165.png,tampered,True,Z2bs,text,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0173.png,qr_val_tamp_0173.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100
+data\clean_qr\test\tampered\qr_val_tamp_0178.png,qr_val_tamp_0178.png,tampered,False,,none,tampered,0.0,0.0,1.0,False,,,,1.0,,1.0,SUSPICIOUS,100

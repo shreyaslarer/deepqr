@@ -14,18 +14,19 @@ import {
 /**
  * PipelineVisualization component for DeepQR Shield.
  *
- * Implements a conceptual, static architectural explanation of the defensive inspection pipeline:
+ * Implements a conceptual architectural explanation of the defensive inspection pipeline:
  * - Stage 01: QR Image Input
  * - Stage 02: Detection and Decoding
  * - Stage 03: Parallel Dual-Branch Analysis (Visual Analysis & URL Analysis)
  * - Stage 04: Multimodal Fusion
  * - Stage 05: Risk Assessment (Taxonomy: SAFE, SUSPICIOUS, MALICIOUS)
  *
- * Important constraints:
- * - Neutral terminology: Uses "Visual Analysis" and "URL Analysis" without picking unconfirmed model types.
- * - Static technical connectors: Pure vector lines showing branching and reconvergence.
- * - Zero fabricated ML results or simulated runtime telemetry.
- * - Zero em-dashes or en-dashes throughout.
+ * Visual & Motion upgrades:
+ * - Refined layered surface hierarchy with subtle inset edge highlights.
+ * - Reactive stage hover transitions using standard cubic-bezier curves.
+ * - Restrained vector connector routing.
+ * - Zero fabricated runtime animations or fake telemetry.
+ * - Zero em-dashes and en-dashes throughout.
  */
 export default function PipelineVisualization() {
   return (
@@ -51,10 +52,10 @@ export default function PipelineVisualization() {
         {/* Pipeline Graph Container */}
         <div className="mx-auto max-w-2xl">
           {/* Stage 01: QR Image */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+          <div className="group rounded-xl border border-white/[0.07] bg-zinc-900/40 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/60 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/90 text-zinc-300 transition-colors group-hover:border-zinc-700 group-hover:text-zinc-100">
                   <QrCode size={18} weight="regular" />
                 </div>
                 <div>
@@ -81,10 +82,10 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 02: Detection and Decoding */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+          <div className="group rounded-xl border border-white/[0.07] bg-zinc-900/40 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/60 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/90 text-zinc-300 transition-colors group-hover:border-zinc-700 group-hover:text-zinc-100">
                   <Scan size={18} weight="regular" />
                 </div>
                 <div>
@@ -125,9 +126,9 @@ export default function PipelineVisualization() {
           {/* Stage 03: Parallel Dual-Branch Analysis */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Branch 03A: Visual Analysis */}
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+            <div className="group rounded-xl border border-white/[0.07] bg-zinc-900/40 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/60 motion-reduce:transition-none">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/90 text-zinc-300 transition-colors group-hover:border-zinc-700 group-hover:text-zinc-100">
                   <FileImage size={18} weight="regular" />
                 </div>
                 <div>
@@ -145,9 +146,9 @@ export default function PipelineVisualization() {
             </div>
 
             {/* Branch 03B: URL Analysis */}
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+            <div className="group rounded-xl border border-white/[0.07] bg-zinc-900/40 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/60 motion-reduce:transition-none">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/90 text-zinc-300 transition-colors group-hover:border-zinc-700 group-hover:text-zinc-100">
                   <LinkSimple size={18} weight="regular" />
                 </div>
                 <div>
@@ -185,10 +186,10 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 04: Multimodal Fusion */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+          <div className="group rounded-xl border border-white/[0.07] bg-zinc-900/40 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/60 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-emerald-400">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
                   <GitMerge size={18} weight="regular" />
                 </div>
                 <div>
@@ -215,9 +216,9 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 05: Risk Assessment & Output Taxonomy */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5 sm:p-6 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
+          <div className="group rounded-xl border border-white/[0.08] bg-zinc-900/50 p-5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:bg-zinc-900/70 motion-reduce:transition-none">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/90 text-zinc-300">
                 <ShieldCheck size={18} weight="regular" />
               </div>
               <div>

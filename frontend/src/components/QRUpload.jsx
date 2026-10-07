@@ -21,13 +21,13 @@ function formatFileSize(bytes) {
 /**
  * QRUpload component for DeepQR Shield.
  *
- * Implements a focused, operational image input experience:
- * - Drag and drop + native file selection for PNG, JPG, JPEG, and WEBP.
- * - Clean empty state without generic SaaS cloud illustrations or fake status pills.
- * - Selected file state with authentic metadata (name, type, size) and local image preview.
- * - Non-color-dependent validation error handling.
- * - Honest handling of the analyze trigger (no simulated ML or fabricated results).
- * - High accessibility (keyboard operable, visible focus rings, aria announcements).
+ * Implements a premium architectural inspection surface:
+ * - Layered physical enclosure with subtle backdrop blur and edge highlight.
+ * - Reactive pointer illumination (subtle radial light response via CSS variables, no re-renders).
+ * - Calibrated drag feedback with optical inspection brackets.
+ * - Viewport framing marks and optical registration lines.
+ * - Continuous surface state transition into the staged inspection dossier.
+ * - Zero fake ML progress, zero neon glows, zero em-dashes and en-dashes.
  */
 export default function QRUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -36,6 +36,7 @@ export default function QRUpload() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isStagedNoticeVisible, setIsStagedNoticeVisible] = useState(false);
   const fileInputRef = useRef(null);
+  const surfaceRef = useRef(null);
 
   // Revoke object URL on cleanup
   useEffect(() => {
@@ -71,7 +72,6 @@ export default function QRUpload() {
     if (file) {
       handleFileProcess(file);
     }
-    // Reset file input value so selecting the same file again works
     e.target.value = '';
   };
 
@@ -112,12 +112,21 @@ export default function QRUpload() {
   };
 
   const handleAnalyzeClick = () => {
-    // Honest handling: no fake ML inference or fabricated scores
     setIsStagedNoticeVisible(true);
   };
 
   const triggerFileInput = () => {
     fileInputRef.current?.click();
+  };
+
+  // Pointer position tracking via CSS variables without re-rendering React component
+  const handleMouseMove = (e) => {
+    if (!surfaceRef.current) return;
+    const rect = surfaceRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    surfaceRef.current.style.setProperty('--mouse-x', `${x.toFixed(1)}%`);
+    surfaceRef.current.style.setProperty('--mouse-y', `${y.toFixed(1)}%`);
   };
 
   return (
@@ -128,14 +137,14 @@ export default function QRUpload() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-8">
+        <div className="mb-10 max-w-2xl">
           <h2
             id="upload-heading"
             className="text-2xl font-semibold tracking-tight text-zinc-100 sm:text-3xl"
           >
             Upload a QR image
           </h2>
-          <p className="mt-2 text-sm text-zinc-400 sm:text-base">
+          <p className="mt-2 text-sm text-zinc-400 sm:text-base leading-relaxed">
             Select or drop an image containing a QR code for threat assessment. The destination is not opened automatically.
           </p>
         </div>
@@ -174,147 +183,215 @@ export default function QRUpload() {
           </div>
         )}
 
-        {/* Main Input Surface */}
-        {!selectedFile ? (
-          /* Empty State / Drop Surface */
+        {/* Premium Layered Inspection Surface */}
+        <div
+          ref={surfaceRef}
+          onMouseMove={handleMouseMove}
+          style={{ '--mouse-x': '50%', '--mouse-y': '50%' }}
+          className={`group relative overflow-hidden rounded-2xl border transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
+            isDragging
+              ? 'border-zinc-500 bg-zinc-900/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_12px_40px_rgba(0,0,0,0.48)]'
+              : 'border-white/[0.08] bg-zinc-900/40 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)] hover:border-zinc-700/80 hover:bg-zinc-900/50'
+          }`}
+        >
+          {/* Subtle Dynamic Radial Pointer Illumination Layer */}
           <div
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            onClick={triggerFileInput}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                triggerFileInput();
-              }
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 motion-reduce:hidden"
+            style={{
+              background: 'radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.032), transparent 70%)',
             }}
-            tabIndex={0}
-            role="button"
-            aria-label="Upload QR code image area. Press Enter or Space to choose a file."
-            className={`group relative flex min-h-[220px] cursor-pointer flex-col items-center justify-center rounded-xl border p-8 text-center transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 motion-reduce:transition-none ${
-              isDragging
-                ? 'border-zinc-600 bg-zinc-900/80'
-                : 'border-zinc-800 bg-zinc-900/30 hover:border-zinc-700 hover:bg-zinc-900/50'
+            aria-hidden="true"
+          />
+
+          {/* Architectural Framing Brackets */}
+          <div
+            className={`pointer-events-none absolute top-3.5 left-3.5 h-3 w-3 border-t-2 border-l-2 transition-colors duration-200 ${
+              isDragging ? 'border-emerald-500/80' : 'border-zinc-700/60'
             }`}
-          >
-            {/* Visual Icon Anchor */}
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-zinc-700 group-hover:text-zinc-200">
-              <UploadSimple size={22} weight="regular" />
-            </div>
+            aria-hidden="true"
+          />
+          <div
+            className={`pointer-events-none absolute top-3.5 right-3.5 h-3 w-3 border-t-2 border-r-2 transition-colors duration-200 ${
+              isDragging ? 'border-emerald-500/80' : 'border-zinc-700/60'
+            }`}
+            aria-hidden="true"
+          />
+          <div
+            className={`pointer-events-none absolute bottom-3.5 left-3.5 h-3 w-3 border-b-2 border-l-2 transition-colors duration-200 ${
+              isDragging ? 'border-emerald-500/80' : 'border-zinc-700/60'
+            }`}
+            aria-hidden="true"
+          />
+          <div
+            className={`pointer-events-none absolute bottom-3.5 right-3.5 h-3 w-3 border-b-2 border-r-2 transition-colors duration-200 ${
+              isDragging ? 'border-emerald-500/80' : 'border-zinc-700/60'
+            }`}
+            aria-hidden="true"
+          />
 
-            <div className="mt-4 space-y-1">
-              <p className="text-sm font-medium text-zinc-200">
-                Choose a file or drag and drop here
-              </p>
-              <p className="text-xs text-zinc-500">
-                Supported image formats: PNG, JPG, JPEG, WEBP
-              </p>
-            </div>
+          {!selectedFile ? (
+            /* Empty State / Interactive Staging Aperture */
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={triggerFileInput}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  triggerFileInput();
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label="Upload QR code image area. Press Enter or Space to choose a file."
+              className="relative flex min-h-[260px] cursor-pointer flex-col items-center justify-center p-8 sm:p-12 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+            >
+              {/* Inspection Reticle Aperture */}
+              <div
+                className={`relative flex h-14 w-14 items-center justify-center rounded-xl border transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
+                  isDragging
+                    ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-105'
+                    : 'border-white/[0.08] bg-zinc-900/90 text-zinc-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] group-hover:border-zinc-600 group-hover:text-zinc-100 group-hover:scale-[1.02]'
+                }`}
+              >
+                <QrCode size={24} weight="regular" />
+                {/* Optical Alignment Ticks */}
+                <div className="absolute -top-1 left-1/2 h-1 w-px -translate-x-1/2 bg-zinc-700" aria-hidden="true" />
+                <div className="absolute -bottom-1 left-1/2 h-1 w-px -translate-x-1/2 bg-zinc-700" aria-hidden="true" />
+                <div className="absolute -left-1 top-1/2 h-px w-1 -translate-y-1/2 bg-zinc-700" aria-hidden="true" />
+                <div className="absolute -right-1 top-1/2 h-px w-1 -translate-y-1/2 bg-zinc-700" aria-hidden="true" />
+              </div>
 
-            <div className="mt-5">
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/80 px-3.5 py-1.5 text-xs font-medium text-zinc-200 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-zinc-800 group-hover:text-white motion-reduce:transition-none">
-                Browse files
-              </span>
-            </div>
-          </div>
-        ) : (
-          /* Selected File State */
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-8">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-              {/* Contained Local Image Preview */}
-              {previewUrl && (
-                <div className="relative flex aspect-square w-full shrink-0 items-center justify-center overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 p-2 sm:w-44">
-                  <img
-                    src={previewUrl}
-                    alt="Selected QR code"
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-              )}
+              {/* Informational Typographic Hierarchy */}
+              <div className="mt-5 space-y-1.5 max-w-md">
+                <p className="text-base font-medium tracking-tight text-zinc-100">
+                  {isDragging ? 'Drop QR image to stage for analysis' : 'Choose a QR image or drag and drop here'}
+                </p>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  Supported image formats: PNG, JPG, JPEG, WEBP. Destination routing is quarantined and not opened automatically.
+                </p>
+              </div>
 
-              {/* File Metadata & Staging Controls */}
-              <div className="flex flex-1 flex-col justify-between">
-                <div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-                        Selected File
-                      </p>
-                      <h3 className="mt-1 break-all text-base font-semibold text-zinc-100 sm:text-lg">
-                        {selectedFile.name}
-                      </h3>
+              {/* Tactile Action Button */}
+              <div className="mt-6">
+                <span className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-800/80 px-4 py-2 text-xs font-medium text-zinc-200 shadow-xs transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-zinc-600 group-hover:bg-zinc-800 group-hover:text-white motion-reduce:transition-none">
+                  <UploadSimple size={15} weight="bold" />
+                  <span>Browse files</span>
+                </span>
+              </div>
+            </div>
+          ) : (
+            /* Selected File State / Staged Inspection Dossier */
+            <div className="p-6 sm:p-8">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+                {/* Optical Inspection Viewport */}
+                {previewUrl && (
+                  <div className="relative flex aspect-square w-full sm:w-52 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/90 p-3 shadow-inner">
+                    {/* Viewport Corner Registration Marks */}
+                    <div className="pointer-events-none absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-zinc-700" aria-hidden="true" />
+                    <div className="pointer-events-none absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-zinc-700" aria-hidden="true" />
+                    <div className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-zinc-700" aria-hidden="true" />
+                    <div className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-zinc-700" aria-hidden="true" />
+
+                    {/* Subtle Crosshair Coordinate Lines */}
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-15" aria-hidden="true">
+                      <div className="h-full w-px bg-zinc-600" />
+                      <div className="absolute w-full h-px bg-zinc-600" />
                     </div>
+
+                    <img
+                      src={previewUrl}
+                      alt="Staged QR code specimen"
+                      className="relative z-10 max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                )}
+
+                {/* Staged Specimen Dossier & Actions */}
+                <div className="flex flex-1 flex-col justify-between min-w-0">
+                  <div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 block">
+                          Specimen Staged
+                        </span>
+                        <h3 className="mt-1 truncate text-base font-semibold text-zinc-100 sm:text-lg">
+                          {selectedFile.name}
+                        </h3>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleReset}
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                        aria-label="Remove selected file"
+                        title="Remove file"
+                      >
+                        <X size={16} weight="regular" />
+                      </button>
+                    </div>
+
+                    {/* Technical Metadata Specifications */}
+                    <dl className="mt-5 grid grid-cols-2 gap-4 text-xs sm:grid-cols-3 border-t border-zinc-800/80 pt-4">
+                      <div>
+                        <dt className="text-zinc-500">Format</dt>
+                        <dd className="mt-0.5 font-mono font-medium text-zinc-300">
+                          {selectedFile.type || 'Image'}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-zinc-500">File Size</dt>
+                        <dd className="mt-0.5 font-mono font-medium text-zinc-300">
+                          {formatFileSize(selectedFile.size)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-zinc-500">Pipeline Status</dt>
+                        <dd className="mt-0.5 font-mono font-medium text-zinc-300">
+                          Staged for inspection
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  {/* Primary & Secondary Actions */}
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={handleAnalyzeClick}
+                      className="inline-flex items-center gap-2 rounded-md bg-zinc-100 px-5 py-2.5 text-sm font-medium text-zinc-950 shadow-xs transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                    >
+                      <span>Analyze QR code</span>
+                      <ArrowRight size={16} weight="bold" />
+                    </button>
+
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
-                      aria-label="Remove selected file"
-                      title="Remove file"
+                      className="inline-flex items-center rounded-md border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm font-medium text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
                     >
-                      <X size={16} weight="regular" />
+                      Select different file
                     </button>
                   </div>
 
-                  {/* Metadata Specs */}
-                  <dl className="mt-4 grid grid-cols-2 gap-4 text-xs sm:grid-cols-3">
-                    <div>
-                      <dt className="text-zinc-500">Format</dt>
-                      <dd className="mt-0.5 font-medium text-zinc-300">
-                        {selectedFile.type || 'Image'}
-                      </dd>
+                  {/* Honest Staging Notice */}
+                  {isStagedNoticeVisible && (
+                    <div
+                      role="status"
+                      aria-live="polite"
+                      className="mt-5 flex items-start gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/80 p-3.5 text-xs text-zinc-300"
+                    >
+                      <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
+                      <p>
+                        Image successfully staged for inspection. Detection and analytical models will be integrated in subsequent phases.
+                      </p>
                     </div>
-                    <div>
-                      <dt className="text-zinc-500">File Size</dt>
-                      <dd className="mt-0.5 font-medium text-zinc-300">
-                        {formatFileSize(selectedFile.size)}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-zinc-500">Inspection Status</dt>
-                      <dd className="mt-0.5 font-medium text-zinc-300">
-                        Staged (Pending analysis)
-                      </dd>
-                    </div>
-                  </dl>
+                  )}
                 </div>
-
-                {/* Analysis Actions */}
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={handleAnalyzeClick}
-                    className="inline-flex items-center gap-2 rounded-md bg-zinc-100 px-5 py-2.5 text-sm font-medium text-zinc-950 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
-                  >
-                    <span>Analyze QR code</span>
-                    <ArrowRight size={16} weight="bold" />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    className="inline-flex items-center rounded-md border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm font-medium text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
-                  >
-                    Select different file
-                  </button>
-                </div>
-
-                {/* Honest Staging Notice (No fabricated ML progress or fake results) */}
-                {isStagedNoticeVisible && (
-                  <div
-                    role="status"
-                    aria-live="polite"
-                    className="mt-4 flex items-start gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/60 p-3 text-xs text-zinc-300"
-                  >
-                    <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
-                    <p>
-                      Image successfully staged for inspection. Detection and analytical models will be integrated in subsequent phases.
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

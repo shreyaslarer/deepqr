@@ -32,13 +32,13 @@ export default function Footer({ onNavigate }) {
   };
 
   return (
-    <footer className="w-full border-t border-zinc-800/80 bg-zinc-950 py-12 text-zinc-400">
+    <footer className="w-full border-t border-white/[0.06] bg-zinc-950 py-12 text-zinc-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           {/* Brand Identity & Research Context */}
           <div className="max-w-md">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
+              <div className="flex h-7 w-7 items-center justify-center rounded-md border border-white/[0.08] bg-zinc-900/80 text-zinc-300">
                 <QrCode size={16} weight="regular" />
               </div>
               <div className="flex items-baseline gap-1.5">

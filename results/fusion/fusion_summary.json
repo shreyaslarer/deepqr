@@ -1,0 +1,85 @@
+{
+  "total_test_qr_images": 342,
+  "ground_truth_counts": {
+    "benign": 103,
+    "malicious": 119,
+    "tampered": 120
+  },
+  "qr_decoding_statistics": {
+    "successfully_decoded": 195,
+    "not_decoded": 147,
+    "decode_rate_pct": 57.02,
+    "url_payloads": 77,
+    "non_url_payloads": 118
+  },
+  "final_fusion_decisions": {
+    "SAFE": 98,
+    "SUSPICIOUS": 128,
+    "MALICIOUS": 116
+  },
+  "breakdown_by_ground_truth": {
+    "benign": {
+      "total": 103,
+      "decoded": 94,
+      "not_decoded": 9,
+      "url_count": 30,
+      "non_url_count": 64,
+      "final_decisions": {
+        "SAFE": 98,
+        "SUSPICIOUS": 5,
+        "MALICIOUS": 0
+      }
+    },
+    "malicious": {
+      "total": 119,
+      "decoded": 47,
+      "not_decoded": 72,
+      "url_count": 47,
+      "non_url_count": 0,
+      "final_decisions": {
+        "SAFE": 0,
+        "SUSPICIOUS": 3,
+        "MALICIOUS": 116
+      }
+    },
+    "tampered": {
+      "total": 120,
+      "decoded": 54,
+      "not_decoded": 66,
+      "url_count": 0,
+      "non_url_count": 54,
+      "final_decisions": {
+        "SAFE": 0,
+        "SUSPICIOUS": 120,
+        "MALICIOUS": 0
+      }
+    }
+  },
+  "branch_metrics": {
+    "visual_branch_resnet18": {
+      "test_samples": 342,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "benign_recall": 1.0,
+      "malicious_recall": 1.0,
+      "tampered_recall": 1.0
+    },
+    "url_branch_char_cnn": {
+      "held_out_test_samples": 7500,
+      "accuracy": 0.9436,
+      "macro_f1": 0.9435,
+      "malicious_recall": 0.9755,
+      "benign_recall": 0.9117
+    }
+  },
+  "fusion_configuration": {
+    "visual_weight": 0.5,
+    "url_weight": 0.5,
+    "suspicious_threshold": 0.4,
+    "malicious_threshold": 0.7,
+    "formula": "final_malicious_score = 0.5 * visual_malicious_score + 0.5 * url_malicious_score",
+    "weight_justification": "Baseline academic fusion rule, NOT an optimized weight",
+    "threshold_justification": "Baseline academic thresholds (0.40 / 0.70), NOT tuned against test data"
+  },
+  "important_dataset_limitation": "The QR image dataset and URL dataset are NOT naturally paired. Therefore, no conventional paired multimodal test accuracy is claimed. The fusion results verify that the decision-level logic operates consistently across varying visual and decoded payload states."
+}

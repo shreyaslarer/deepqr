@@ -1,0 +1,49 @@
+{
+  "model": "URLCharCNN",
+  "evaluated_epoch": 9,
+  "test_samples": 7500,
+  "test_metrics": {
+    "loss": 0.17518298111756642,
+    "accuracy": 0.9436,
+    "precision": 0.917021809977438,
+    "recall": 0.9754666666666667,
+    "f1": 0.9453417754231813,
+    "macro_precision": 0.9454092245557939,
+    "macro_recall": 0.9436,
+    "macro_f1": 0.9435426684580444,
+    "benign_recall": 0.9117333333333333,
+    "malicious_recall": 0.9754666666666667,
+    "confusion_matrix": [
+      [
+        3419,
+        331
+      ],
+      [
+        92,
+        3658
+      ]
+    ],
+    "malicious_false_negatives": 92,
+    "malicious_false_positives": 331,
+    "per_class_metrics": {
+      "benign": {
+        "precision": 0.9737966391341498,
+        "recall": 0.9117333333333333,
+        "f1": 0.9417435614929073,
+        "support": 3750
+      },
+      "malicious": {
+        "precision": 0.917021809977438,
+        "recall": 0.9754666666666667,
+        "f1": 0.9453417754231813,
+        "support": 3750
+      }
+    }
+  },
+  "system_info": {
+    "python_version": "3.11.7 (tags/v3.11.7:fa7a6f2, Dec  4 2023, 19:24:49) [MSC v.1937 64 bit (AMD64)]",
+    "pytorch_version": "2.6.0+cu124",
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  }
+}

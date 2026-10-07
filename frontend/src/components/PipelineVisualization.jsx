@@ -36,14 +36,14 @@ export default function PipelineVisualization() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
+        <div className="mb-10 max-w-2xl">
           <h2
             id="pipeline-heading"
             className="text-2xl font-semibold tracking-tight text-zinc-100 sm:text-3xl"
           >
             Analysis Pipeline
           </h2>
-          <p className="mt-3 text-sm text-zinc-400 sm:text-base leading-relaxed">
+          <p className="mt-2 text-sm text-zinc-400 sm:text-base leading-relaxed">
             Conceptual inspection workflow. Submitted QR codes are evaluated through independent visual and destination analysis paths before combined risk classification.
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function PipelineVisualization() {
         {/* Pipeline Graph Container */}
         <div className="mx-auto max-w-2xl">
           {/* Stage 01: QR Image */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors hover:border-zinc-700">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
@@ -81,7 +81,7 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 02: Detection and Decoding */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors hover:border-zinc-700">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
@@ -125,7 +125,7 @@ export default function PipelineVisualization() {
           {/* Stage 03: Parallel Dual-Branch Analysis */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Branch 03A: Visual Analysis */}
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors hover:border-zinc-700">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
                   <FileImage size={18} weight="regular" />
@@ -145,7 +145,7 @@ export default function PipelineVisualization() {
             </div>
 
             {/* Branch 03B: URL Analysis */}
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors hover:border-zinc-700">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
                   <LinkSimple size={18} weight="regular" />
@@ -185,7 +185,7 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 04: Multimodal Fusion */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors hover:border-zinc-700">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-emerald-400">
@@ -215,7 +215,7 @@ export default function PipelineVisualization() {
           </div>
 
           {/* Stage 05: Risk Assessment & Output Taxonomy */}
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5 sm:p-6 transition-colors hover:border-zinc-700">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5 sm:p-6 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 motion-reduce:transition-none">
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300">
                 <ShieldCheck size={18} weight="regular" />

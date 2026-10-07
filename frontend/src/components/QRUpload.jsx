@@ -124,7 +124,7 @@ export default function QRUpload() {
     <section
       id="analyze"
       aria-labelledby="upload-heading"
-      className="w-full border-b border-zinc-800/80 bg-zinc-950 py-16 sm:py-20"
+      className="w-full border-b border-zinc-800/80 bg-zinc-950 py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -166,7 +166,7 @@ export default function QRUpload() {
               <button
                 type="button"
                 onClick={() => setErrorMessage(null)}
-                className="mt-2 text-xs font-medium text-amber-300 underline underline-offset-2 hover:text-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-xs"
+                className="mt-2 text-xs font-medium text-amber-300 underline underline-offset-2 hover:text-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-xs"
               >
                 Dismiss error
               </button>
@@ -212,7 +212,7 @@ export default function QRUpload() {
             </div>
 
             <div className="mt-5">
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/80 px-3.5 py-1.5 text-xs font-medium text-zinc-200 transition-colors group-hover:bg-zinc-800 group-hover:text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/80 px-3.5 py-1.5 text-xs font-medium text-zinc-200 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-zinc-800 group-hover:text-white motion-reduce:transition-none">
                 Browse files
               </span>
             </div>
@@ -247,7 +247,7 @@ export default function QRUpload() {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="inline-flex items-center gap-1 rounded-md border border-zinc-800 bg-zinc-900/60 p-1.5 text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
                       aria-label="Remove selected file"
                       title="Remove file"
                     >

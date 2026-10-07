@@ -1,0 +1,13 @@
+{
+  "total_samples": 50000,
+  "train_samples": 35000,
+  "train_benign": 17500,
+  "train_malicious": 17500,
+  "val_samples": 7500,
+  "val_benign": 3750,
+  "val_malicious": 3750,
+  "test_samples": 7500,
+  "test_benign": 3750,
+  "test_malicious": 3750,
+  "random_seed": 42
+}

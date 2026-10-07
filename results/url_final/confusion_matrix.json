@@ -1,0 +1,32 @@
+{
+  "classes": [
+    "benign",
+    "malicious"
+  ],
+  "class_to_idx": {
+    "benign": 0,
+    "malicious": 1
+  },
+  "test_confusion_matrix": [
+    [
+      3419,
+      331
+    ],
+    [
+      92,
+      3658
+    ]
+  ],
+  "val_confusion_matrix": [
+    [
+      3413,
+      337
+    ],
+    [
+      106,
+      3644
+    ]
+  ],
+  "test_malicious_false_negatives": 92,
+  "test_malicious_false_positives": 331
+}

@@ -1,0 +1,51 @@
+{
+  "model": "URLCharCNN",
+  "best_epoch": 9,
+  "total_training_time_sec": 28.760427951812744,
+  "peak_vram_mb": 60.2060546875,
+  "selection_criteria": "1. malicious_recall, 2. macro_f1, 3. val_loss, 4. val_accuracy",
+  "validation_metrics": {
+    "loss": 0.1940939243833224,
+    "accuracy": 0.9409333333333333,
+    "precision": 0.915347902537051,
+    "recall": 0.9717333333333333,
+    "f1": 0.9426982279135946,
+    "macro_precision": 0.9426128543659964,
+    "macro_recall": 0.9409333333333334,
+    "macro_f1": 0.940877247125046,
+    "benign_recall": 0.9101333333333333,
+    "malicious_recall": 0.9717333333333333,
+    "confusion_matrix": [
+      [
+        3413,
+        337
+      ],
+      [
+        106,
+        3644
+      ]
+    ],
+    "malicious_false_negatives": 106,
+    "malicious_false_positives": 337,
+    "per_class_metrics": {
+      "benign": {
+        "precision": 0.9698778061949418,
+        "recall": 0.9101333333333333,
+        "f1": 0.9390562663364974,
+        "support": 3750
+      },
+      "malicious": {
+        "precision": 0.915347902537051,
+        "recall": 0.9717333333333333,
+        "f1": 0.9426982279135946,
+        "support": 3750
+      }
+    }
+  },
+  "system_info": {
+    "python_version": "3.11.7 (tags/v3.11.7:fa7a6f2, Dec  4 2023, 19:24:49) [MSC v.1937 64 bit (AMD64)]",
+    "pytorch_version": "2.6.0+cu124",
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  }
+}

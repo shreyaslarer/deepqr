@@ -1,0 +1,36 @@
+{
+  "classes": [
+    "benign",
+    "malicious",
+    "tampered"
+  ],
+  "class_to_idx": {
+    "benign": 0,
+    "malicious": 1,
+    "tampered": 2
+  },
+  "best_epoch": 12,
+  "confusion_matrix": [
+    [
+      103,
+      0,
+      0
+    ],
+    [
+      0,
+      119,
+      0
+    ],
+    [
+      0,
+      0,
+      120
+    ]
+  ],
+  "error_counts": {
+    "malicious_to_benign": 0,
+    "malicious_to_tampered": 0,
+    "tampered_to_benign": 0,
+    "benign_to_malicious": 0
+  }
+}

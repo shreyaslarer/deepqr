@@ -14,9 +14,9 @@ export default function DefenseProtocolRibbon() {
   const protocols = [
     {
       icon: Eye,
-      title: 'Optical Tamper Detection',
+      title: 'Visual Tamper Detection',
       desc: 'Inspects matrix regularity, finder boundaries, and physical overlays.',
-      tag: 'OPTICAL // ACTIVE',
+      tag: 'ACTIVE // 24/7',
     },
     {
       icon: LockKey,

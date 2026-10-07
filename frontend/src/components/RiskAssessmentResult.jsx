@@ -315,13 +315,12 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Visual Pattern Signal */}
-                <div className="rounded-xl border border-white/[0.08] bg-zinc-950/70 p-4.5 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700/80">
+                <div className="rounded-xl border border-white/[0.08] bg-zinc-950/70 p-4.5 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.33,1)] hover:-translate-y-0.5 hover:border-zinc-700/80">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
                       <Waveform size={14} className="text-emerald-400" />
                       <span>SIGNAL 01</span>
                     </span>
-                    <span className="text-[10px] font-mono text-zinc-500">OPTICAL</span>
                   </div>
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Visual Pattern Analysis
@@ -343,7 +342,6 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                       <LinkSimple size={14} className="text-emerald-400" />
                       <span>SIGNAL 02</span>
                     </span>
-                    <span className="text-[10px] font-mono text-zinc-500">ROUTING</span>
                   </div>
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Destination Link Analysis
@@ -365,7 +363,6 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                       <Cpu size={14} className="text-emerald-400" />
                       <span>SIGNAL 03</span>
                     </span>
-                    <span className="text-[10px] font-mono text-emerald-400">SYNTHESIS</span>
                   </div>
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Combined Risk Assessment

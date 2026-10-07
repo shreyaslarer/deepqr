@@ -75,7 +75,6 @@ export default function QRUpload({ onAnalysisComplete }) {
   const [isStagedNoticeVisible, setIsStagedNoticeVisible] = useState(false);
   const [activeSpecimenType, setActiveSpecimenType] = useState('safe');
   const [isScanning, setIsScanning] = useState(false);
-  const [scanStatus, setScanStatus] = useState('');
 
   const fileInputRef = useRef(null);
   const surfaceRef = useRef(null);
@@ -191,22 +190,18 @@ export default function QRUpload({ onAnalysisComplete }) {
     if (isScanning) return;
     setIsScanning(true);
     sound.playScanSweep();
-    setScanStatus('Acquiring matrix geometry and finder boundaries...');
 
     setTimeout(() => {
       sound.playScanSweep();
-      setScanStatus('Quarantining embedded URL payload and resolving host...');
     }, 400);
 
     setTimeout(() => {
       sound.playClick();
-      setScanStatus('Synthesizing dual-modality threat signals...');
     }, 800);
 
     setTimeout(() => {
       sound.playLockSuccess();
       setIsScanning(false);
-      setScanStatus('Analysis complete. Verdict formulated.');
       setIsStagedNoticeVisible(true);
       if (onAnalysisComplete) {
         onAnalysisComplete(activeSpecimenType);
@@ -550,7 +545,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
                             </span>
-                            <span>Deconvolving...</span>
+                            <span>Analyzing...</span>
                           </>
                         ) : (
                           <>
@@ -568,17 +563,6 @@ export default function QRUpload({ onAnalysisComplete }) {
                         Select different file
                       </button>
                     </div>
-
-                    {/* Live Optical Scanning Telemetry */}
-                    {isScanning && (
-                      <div className="mt-5 rounded-md border border-emerald-500/30 bg-emerald-950/20 p-3.5 text-xs font-mono text-emerald-300">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <Cpu size={14} className="text-emerald-400 animate-spin" />
-                          <span className="font-semibold uppercase tracking-wider">Live Pipeline Telemetry:</span>
-                        </div>
-                        <p className="text-zinc-300">{scanStatus}</p>
-                      </div>
-                    )}
 
                     {/* Staging & Completion Notice */}
                     {isStagedNoticeVisible && !isScanning && (

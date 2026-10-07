@@ -1,12 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { ArrowRight, ShieldCheck, Eye, Cpu, Broadcast, Compass } from '@phosphor-icons/react';
+import React, { useRef, useEffect } from 'react';
+import { ArrowRight, ShieldCheck } from '@phosphor-icons/react';
 import { sound } from '../utils/sound.js';
 
 export default function Hero({ onAnalyzeClick }) {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
-  const [telemetry, setTelemetry] = useState({ rotX: 0, rotY: 0 });
-  const [scanMode, setScanMode] = useState('optical'); // 'optical' | 'spectral' | 'matrix'
 
   const handleAction = (e) => {
     e.preventDefault();
@@ -71,7 +69,7 @@ export default function Hero({ onAnalyzeClick }) {
     container.addEventListener('mouseenter', handleMouseEnter);
     container.addEventListener('mouseleave', handleMouseLeave);
 
-    // Spring interpolation loop (Apple WWDC 2018 damping 1.0 equivalent)
+    // Spring interpolation loop (Apple WWDC damping equivalent)
     const springDamping = 0.08;
     let tickCount = 0;
 
@@ -86,14 +84,6 @@ export default function Hero({ onAnalyzeClick }) {
       currentRotY += (targetRotY + idleFloatY - currentRotY) * springDamping;
 
       card.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
-
-      // Update telemetry display every 6 frames to avoid DOM thrashing
-      if (tickCount % 6 === 0) {
-        setTelemetry({
-          rotX: Math.round(currentRotX),
-          rotY: Math.round(currentRotY),
-        });
-      }
 
       animationFrameId = requestAnimationFrame(updatePhysics);
     };
@@ -117,17 +107,6 @@ export default function Hero({ onAnalyzeClick }) {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Editorial & Operational Content */}
           <div className="lg:col-span-7">
-            {/* Live Telemetry Status Pill */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/25 bg-emerald-950/30 px-3.5 py-1 text-xs font-mono text-emerald-400 backdrop-blur-md shadow-[0_0_24px_rgba(16,185,129,0.12)] mb-6 transition-all duration-300 hover:border-emerald-500/40">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-radar-pulse absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="tracking-wider uppercase font-medium">
-                Defensive Neural Core // v2.4 Active
-              </span>
-            </div>
-
             {/* Kinetic Shimmer Headline */}
             <h1
               id="hero-heading"
@@ -179,40 +158,6 @@ export default function Hero({ onAnalyzeClick }) {
               }}
               className="relative flex aspect-square w-full max-w-[340px] sm:max-w-[380px] flex-col justify-between rounded-2xl border border-white/[0.12] bg-zinc-900/60 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_25px_60px_rgba(16,185,129,0.1)] cursor-grab active:cursor-grabbing select-none"
             >
-              {/* Interactive 3D Mode Selector Tabs (translateZ: 92px) */}
-              <div
-                style={{ transform: 'translateZ(92px)' }}
-                className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 p-1 rounded-lg bg-zinc-950/90 border border-white/[0.14] backdrop-blur-xl shadow-xl z-30"
-              >
-                {[
-                  { id: 'optical', label: '01 OPTICAL', icon: Eye },
-                  { id: 'spectral', label: '02 SPECTRAL', icon: Broadcast },
-                  { id: 'matrix', label: '03 RETICLE', icon: Compass },
-                ].map((m) => {
-                  const Icon = m.icon;
-                  const isCur = scanMode === m.id;
-                  return (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        sound.playClick();
-                        setScanMode(m.id);
-                      }}
-                      className={`flex items-center gap-1 px-2.5 py-1 text-[9px] font-mono tracking-wider rounded transition-all duration-150 active:scale-[0.95] ${
-                        isCur
-                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-xs'
-                          : 'text-zinc-400 hover:text-zinc-200'
-                      }`}
-                    >
-                      <Icon size={11} className={isCur ? 'text-emerald-400' : 'text-zinc-500'} />
-                      <span>{m.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
               {/* Layer 0: Dynamic Specular Reflection Sheen */}
               <div
                 className="pointer-events-none absolute inset-0 rounded-2xl opacity-70 transition-opacity duration-300 motion-reduce:hidden"
@@ -240,15 +185,7 @@ export default function Hero({ onAnalyzeClick }) {
                 className="pointer-events-none absolute inset-x-6 top-6 bottom-6 overflow-hidden"
               >
                 <div className="relative h-full w-full">
-                  <div
-                    className={`animate-laser-sweep absolute left-0 right-0 h-0.5 shadow-lg ${
-                      scanMode === 'spectral'
-                        ? 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_16px_rgba(34,211,238,0.9)]'
-                        : scanMode === 'matrix'
-                        ? 'bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_16px_rgba(251,191,36,0.9)]'
-                        : 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_14px_rgba(52,211,153,0.9)]'
-                    }`}
-                  >
+                  <div className="animate-laser-sweep absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_14px_rgba(52,211,153,0.9)]">
                     <div className="absolute -inset-y-3 inset-x-0 bg-emerald-400/10 blur-xs" />
                   </div>
                 </div>
@@ -323,44 +260,16 @@ export default function Hero({ onAnalyzeClick }) {
                 </div>
               </div>
 
-              {/* Layer 4: Floating 3D HUD & Telemetry Layer (translateZ: 78px) */}
+              {/* Layer 4: 3D Corner Registration Framing (translateZ: 78px) */}
               <div
                 style={{ transform: 'translateZ(78px)' }}
-                className="pointer-events-none absolute inset-0 p-3 flex flex-col justify-between"
+                className="pointer-events-none absolute inset-0 p-3"
               >
                 {/* 3D Corner Registration Brackets */}
                 <div className="absolute top-2 left-2 h-3.5 w-3.5 border-t-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
                 <div className="absolute top-2 right-2 h-3.5 w-3.5 border-t-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
                 <div className="absolute bottom-2 left-2 h-3.5 w-3.5 border-b-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
                 <div className="absolute bottom-2 right-2 h-3.5 w-3.5 border-b-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
-
-                {/* Floating Top Telemetry Badge */}
-                <div className="flex items-center justify-between px-2 pt-1 text-[10px] font-mono text-emerald-400">
-                  <span className="flex items-center gap-1 bg-zinc-950/80 px-2 py-0.5 rounded border border-emerald-500/30 backdrop-blur-md">
-                    <Eye size={12} />
-                    <span>
-                      {scanMode === 'spectral'
-                        ? 'SPECTRAL DENSITY'
-                        : scanMode === 'matrix'
-                        ? 'RETICLE LOCK'
-                        : 'OPTICAL 3D MATRIX'}
-                    </span>
-                  </span>
-                  <span className="bg-zinc-950/80 px-2 py-0.5 rounded border border-zinc-800 text-zinc-400 backdrop-blur-md">
-                    Z-AXIS: +78mm
-                  </span>
-                </div>
-
-                {/* Floating Bottom Telemetry Readout */}
-                <div className="flex items-center justify-between px-2 pb-1 text-[10px] font-mono text-zinc-400">
-                  <span className="bg-zinc-950/80 px-2 py-0.5 rounded border border-zinc-800 backdrop-blur-md">
-                    TILT: [{telemetry.rotX}deg, {telemetry.rotY}deg]
-                  </span>
-                  <span className="flex items-center gap-1 bg-zinc-950/80 px-2 py-0.5 rounded border border-emerald-500/30 text-emerald-400 backdrop-blur-md">
-                    <Cpu size={12} />
-                    <span>SYNAPSE OK</span>
-                  </span>
-                </div>
               </div>
             </div>
           </div>

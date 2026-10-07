@@ -101,7 +101,7 @@ export default function Hero({ onAnalyzeClick }) {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative w-full border-b border-zinc-800/80 bg-zinc-950/40 backdrop-blur-xs pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 overflow-hidden"
+      className="relative w-full border-b border-zinc-800/80 bg-zinc-950/20 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
@@ -117,7 +117,7 @@ export default function Hero({ onAnalyzeClick }) {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-zinc-400 sm:text-lg">
+            <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-zinc-300 sm:text-lg">
               DeepQR Shield analyzes both the physical QR code image and its decoded URL destination to identify tampering, obfuscation, and malicious redirects before your device opens the link.
             </p>
 
@@ -136,7 +136,7 @@ export default function Hero({ onAnalyzeClick }) {
                 />
               </a>
 
-              <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-zinc-500">
+              <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-zinc-400">
                 <ShieldCheck size={16} className="text-emerald-400" />
                 <span>Zero redirect execution</span>
               </div>
@@ -156,7 +156,7 @@ export default function Hero({ onAnalyzeClick }) {
                 '--light-y': '50%',
                 transformStyle: 'preserve-3d',
               }}
-              className="relative flex aspect-square w-full max-w-[340px] sm:max-w-[380px] flex-col justify-between rounded-2xl border border-white/[0.12] bg-zinc-900/60 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_25px_60px_rgba(16,185,129,0.1)] cursor-grab active:cursor-grabbing select-none"
+              className="relative flex aspect-square w-full max-w-[340px] sm:max-w-[380px] flex-col justify-between rounded-2xl border border-white/[0.14] bg-zinc-900/90 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_24px_60px_rgba(0,0,0,0.7)] backdrop-blur-md transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_28px_70px_rgba(16,185,129,0.12)] cursor-grab active:cursor-grabbing select-none"
             >
               {/* Layer 0: Dynamic Specular Reflection Sheen */}
               <div
@@ -201,7 +201,7 @@ export default function Hero({ onAnalyzeClick }) {
                   {/* Top-Left Finder Pattern with 3D Depth */}
                   <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                     <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
-                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                      <div className="h-6 w-6 rounded-[2px] bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                     </div>
                   </div>
 
@@ -211,34 +211,34 @@ export default function Hero({ onAnalyzeClick }) {
                   {/* Top-Right Finder Pattern */}
                   <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                     <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
-                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                      <div className="h-6 w-6 rounded-[2px] bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                     </div>
                   </div>
                 </div>
 
                 {/* Center 3D Micro-Module Array */}
                 <div className="my-5 flex items-center justify-center">
-                  <div className="grid grid-cols-6 gap-2 p-2 rounded-lg bg-zinc-950/60 border border-white/[0.04]">
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-600" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-500" />
+                  <div className="grid grid-cols-6 gap-2 p-2 rounded-lg bg-zinc-950/80 border border-white/[0.06]">
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-600" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-500" />
 
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-500" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-500/80" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-500" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-emerald-500/80" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
 
-                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-400/90" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-600" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
-                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-400" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-emerald-400/90" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-600" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-[2px] bg-zinc-400" />
                   </div>
                 </div>
 
@@ -247,7 +247,7 @@ export default function Hero({ onAnalyzeClick }) {
                   {/* Bottom-Left Finder Pattern */}
                   <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                     <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
-                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                      <div className="h-6 w-6 rounded-[2px] bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                     </div>
                   </div>
 
@@ -255,7 +255,7 @@ export default function Hero({ onAnalyzeClick }) {
 
                   {/* Optical Alignment Marker */}
                   <div className="relative flex h-10 w-10 items-center justify-center rounded-md border border-zinc-600 bg-zinc-900/80">
-                    <div className="h-4 w-4 rounded-xs bg-zinc-400" />
+                    <div className="h-4 w-4 rounded-[2px] bg-zinc-400" />
                   </div>
                 </div>
               </div>

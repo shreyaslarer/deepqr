@@ -41,7 +41,7 @@ export default function DefenseProtocolRibbon() {
   return (
     <section
       aria-label="Defensive Security Specifications"
-      className="relative z-20 w-full border-b border-white/[0.08] bg-zinc-950/70 backdrop-blur-md"
+      className="relative z-20 w-full border-b border-white/[0.08] bg-zinc-950/60"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,7 +50,7 @@ export default function DefenseProtocolRibbon() {
             return (
               <div
                 key={i}
-                className="group relative flex flex-col justify-between rounded-xl border border-white/[0.06] bg-zinc-900/30 p-4 transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-zinc-700/80 hover:bg-zinc-900/50"
+                className="group relative flex flex-col justify-between rounded-xl border border-white/[0.08] bg-zinc-900/80 p-4 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-zinc-700/80 hover:bg-zinc-900/95"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2.5">
@@ -61,10 +61,10 @@ export default function DefenseProtocolRibbon() {
                       {p.tag}
                     </span>
                   </div>
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-200">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-100">
                     {p.title}
                   </h3>
-                  <p className="mt-1 text-xs text-zinc-400 leading-relaxed">
+                  <p className="mt-1 text-xs text-zinc-300 leading-relaxed">
                     {p.desc}
                   </p>
                 </div>

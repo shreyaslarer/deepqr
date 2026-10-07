@@ -163,7 +163,7 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
     <section
       id="results"
       aria-labelledby="results-heading"
-      className="w-full bg-zinc-950/60 backdrop-blur-xs py-16 sm:py-20 lg:py-24"
+      className="w-full bg-zinc-950/30 py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -176,14 +176,14 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
               >
                 Risk Assessment Report
               </h2>
-              <p className="mt-2 text-sm text-zinc-400 sm:text-base leading-relaxed">
+              <p className="mt-2 text-sm text-zinc-300 sm:text-base leading-relaxed">
                 Inspection results synthesized across visual image characteristics and decoded destination analysis.
               </p>
             </div>
 
             {/* Specimen Inspection Controls */}
-            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-white/[0.08] bg-zinc-900/80 p-1">
-              <span className="px-2 text-xs font-medium text-zinc-500 select-none">
+            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-white/[0.1] bg-zinc-900/90 p-1">
+              <span className="px-2 text-xs font-medium text-zinc-400 select-none">
                 Preview state:
               </span>
               {Object.keys(DEMO_SPECIMENS).map((key) => {
@@ -209,7 +209,7 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
           </div>
 
           {/* Sample Assessment Notice */}
-          <div className="mt-4 flex items-center gap-2 rounded-md border border-zinc-800/80 bg-zinc-900/30 px-3.5 py-2 text-xs text-zinc-400">
+          <div className="mt-4 flex items-center gap-2 rounded-md border border-zinc-800/80 bg-zinc-900/50 px-3.5 py-2 text-xs text-zinc-300">
             <Info size={15} weight="regular" className="text-zinc-400 shrink-0" />
             <span>
               Sample inspection report. Select an assessment state above to preview how benign, suspicious, and malicious QR threats are reported.
@@ -227,7 +227,7 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
               '--light-y': '50%',
               transformStyle: 'preserve-3d',
             }}
-            className="relative rounded-2xl border border-white/[0.1] bg-zinc-900/50 backdrop-blur-xl p-6 sm:p-8 space-y-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_50px_rgba(0,0,0,0.5)] transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_25px_60px_rgba(0,0,0,0.6)] select-none motion-reduce:transition-none"
+            className="relative rounded-2xl border border-white/[0.12] bg-zinc-900/90 backdrop-blur-sm p-6 sm:p-8 space-y-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_24px_64px_rgba(0,0,0,0.7)] transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_28px_70px_rgba(0,0,0,0.8)] select-none motion-reduce:transition-none"
           >
             {/* Dynamic Specular Light Sheen */}
             <div
@@ -243,7 +243,7 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
               <div className="flex items-start gap-3.5">
                 {renderIcon(specimen.classification)}
                 <div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 block">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 block">
                     Threat Classification
                   </span>
                   <div className="mt-1 flex flex-wrap items-center gap-3">
@@ -256,28 +256,28 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                       <span>Security Assessment</span>
                     </span>
                   </div>
-                  <p className="mt-2.5 text-sm text-zinc-300 max-w-[65ch] leading-relaxed">
+                  <p className="mt-2.5 text-sm text-zinc-200 max-w-[65ch] leading-relaxed">
                     {specimen.summary}
                   </p>
                 </div>
               </div>
 
-              <div className="text-xs text-zinc-500 sm:text-right shrink-0">
+              <div className="text-xs text-zinc-400 sm:text-right shrink-0">
                 <span className="block text-zinc-400">Payload Type:</span>
-                <span className="text-zinc-200 font-mono font-medium text-sm">{specimen.payloadType}</span>
+                <span className="text-zinc-100 font-mono font-medium text-sm">{specimen.payloadType}</span>
               </div>
             </div>
 
             {/* 2. Decoded Destination (Treated as Untrusted Content) */}
             <div className="relative z-10 border-b border-zinc-800/80 pb-6">
               <div className="flex items-center justify-between gap-4 mb-2">
-                <span className="text-xs font-medium uppercase tracking-wider text-zinc-400">
+                <span className="text-xs font-medium uppercase tracking-wider text-zinc-300">
                   Decoded Destination (Untrusted Content)
                 </span>
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-zinc-800 bg-zinc-900/80 px-3 py-1.5 text-xs font-medium text-zinc-300 transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-zinc-700 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.97] motion-reduce:transition-none motion-reduce:transform-none"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-zinc-600 hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.97] motion-reduce:transition-none motion-reduce:transform-none"
                   aria-label="Copy decoded destination text"
                 >
                   {copyFeedback ? (
@@ -295,12 +295,12 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
               </div>
 
               {/* Non-clickable untrusted text display */}
-              <div className="rounded-lg border border-zinc-800/90 bg-zinc-950/90 p-4 font-mono text-xs sm:text-sm text-zinc-300 break-all select-all shadow-inner">
+              <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-4 font-mono text-xs sm:text-sm text-zinc-100 break-all select-all shadow-inner">
                 {specimen.destination}
               </div>
 
               {/* Destination Safety Notice */}
-              <div className="mt-3 flex items-start gap-2 rounded-md border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-xs text-amber-200/90">
+              <div className="mt-3 flex items-start gap-2 rounded-md border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
                 <Warning size={16} weight="regular" className="mt-0.5 shrink-0 text-amber-400" />
                 <p>
                   Safety Notice: Do not open the destination until you have reviewed the assessment.
@@ -310,14 +310,14 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
 
             {/* 3. Analysis Signals (3D Tactile Module Grid) */}
             <div className="relative z-10 border-b border-zinc-800/80 pb-6">
-              <h4 className="text-xs font-medium uppercase tracking-wider text-zinc-400 mb-4">
+              <h4 className="text-xs font-medium uppercase tracking-wider text-zinc-300 mb-4">
                 Contributing Analysis Signals
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Visual Pattern Signal */}
-                <div className="rounded-xl border border-white/[0.08] bg-zinc-950/70 p-4.5 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.33,1)] hover:-translate-y-0.5 hover:border-zinc-700/80">
+                <div className="rounded-xl border border-white/[0.1] bg-zinc-950/90 p-5 shadow-md transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+                    <span className="text-xs font-mono text-zinc-400 flex items-center gap-1.5">
                       <Waveform size={14} className="text-emerald-400" />
                       <span>SIGNAL 01</span>
                     </span>
@@ -325,20 +325,20 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Visual Pattern Analysis
                   </span>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-300 leading-relaxed">
                     {specimen.visualSignal}
                   </p>
                   {/* Micro telemetry meter */}
-                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
                     <span>PATTERN STABILITY</span>
                     <span className="text-emerald-400 font-medium">{specimen.meterLabel}</span>
                   </div>
                 </div>
 
                 {/* URL Signal */}
-                <div className="rounded-xl border border-white/[0.08] bg-zinc-950/70 p-4.5 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700/80">
+                <div className="rounded-xl border border-white/[0.1] bg-zinc-950/90 p-5 shadow-md transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+                    <span className="text-xs font-mono text-zinc-400 flex items-center gap-1.5">
                       <LinkSimple size={14} className="text-emerald-400" />
                       <span>SIGNAL 02</span>
                     </span>
@@ -346,20 +346,20 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Destination Link Analysis
                   </span>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-300 leading-relaxed">
                     {specimen.urlSignal}
                   </p>
                   {/* Micro telemetry meter */}
-                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
                     <span>HOST REPUTATION</span>
                     <span className="text-emerald-400 font-medium">VERIFIED // TLS OK</span>
                   </div>
                 </div>
 
                 {/* Combined Risk Assessment */}
-                <div className="rounded-xl border border-white/[0.08] bg-zinc-950/70 p-4.5 shadow-sm transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700/80">
+                <div className="rounded-xl border border-white/[0.1] bg-zinc-950/90 p-5 shadow-md transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-zinc-700">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+                    <span className="text-xs font-mono text-zinc-400 flex items-center gap-1.5">
                       <Cpu size={14} className="text-emerald-400" />
                       <span>SIGNAL 03</span>
                     </span>
@@ -367,11 +367,11 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
                   <span className="text-sm font-semibold text-zinc-100 block mb-2">
                     Combined Risk Assessment
                   </span>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-300 leading-relaxed">
                     {specimen.fusionSignal}
                   </p>
                   {/* Micro telemetry meter */}
-                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
                     <span>VERDICT CONFIDENCE</span>
                     <span className="text-emerald-400 font-medium">HIGH // DEFENSIVE</span>
                   </div>
@@ -381,10 +381,10 @@ export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpe
 
             {/* 4. "Why this assessment?" (Evidence Rationale) */}
             <div className="relative z-10">
-              <h4 className="text-xs font-medium uppercase tracking-wider text-zinc-400 mb-2">
+              <h4 className="text-xs font-medium uppercase tracking-wider text-zinc-300 mb-2">
                 Why this assessment?
               </h4>
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-[70ch]">
+              <p className="text-xs sm:text-sm text-zinc-200 leading-relaxed max-w-[70ch]">
                 {specimen.explanation}
               </p>
             </div>

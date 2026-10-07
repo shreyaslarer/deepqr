@@ -268,7 +268,7 @@ export default function QRUpload({ onAnalysisComplete }) {
     <section
       id="analyze"
       aria-labelledby="upload-heading"
-      className="w-full border-b border-zinc-800/80 bg-zinc-950/40 backdrop-blur-xs py-16 sm:py-20 lg:py-24"
+      className="w-full border-b border-zinc-800/80 bg-zinc-950/20 py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header with Specimen Preset Chips */}
@@ -280,14 +280,14 @@ export default function QRUpload({ onAnalysisComplete }) {
             >
               Upload a QR image
             </h2>
-            <p className="mt-2 text-sm text-zinc-400 sm:text-base leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-300 sm:text-base leading-relaxed">
               Select or drop an image containing a QR code for threat assessment. The destination is quarantined and not opened automatically.
             </p>
           </div>
 
           {/* Quick-Load Threat Samples */}
           <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 flex items-center gap-1 select-none">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 flex items-center gap-1 select-none">
               <Sparkle size={12} className="text-emerald-400" />
               <span>Or test with a sample threat:</span>
             </span>
@@ -301,7 +301,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                   key={s.type}
                   type="button"
                   onClick={() => handleLoadSample(s.type)}
-                  className="rounded-md border border-white/[0.08] bg-zinc-900/80 px-2.5 py-1 text-xs font-mono text-zinc-300 transition-all duration-150 hover:border-emerald-500/40 hover:text-emerald-300 active:scale-[0.97]"
+                  className="rounded-md border border-white/[0.1] bg-zinc-900 px-2.5 py-1 text-xs font-mono text-zinc-200 transition-all duration-150 hover:border-emerald-500/50 hover:text-emerald-300 active:scale-[0.97]"
                 >
                   {s.label}
                 </button>
@@ -336,7 +336,7 @@ export default function QRUpload({ onAnalysisComplete }) {
               <button
                 type="button"
                 onClick={() => setErrorMessage(null)}
-                className="mt-2 text-xs font-medium text-amber-300 underline underline-offset-2 hover:text-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-xs"
+                className="mt-2 text-xs font-medium text-amber-300 underline underline-offset-2 hover:text-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-[2px]"
               >
                 Dismiss error
               </button>
@@ -355,8 +355,8 @@ export default function QRUpload({ onAnalysisComplete }) {
             }}
             className={`group relative overflow-hidden rounded-2xl border transition-shadow duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none motion-reduce:transition-none ${
               isDragging
-                ? 'border-emerald-500/60 bg-zinc-900/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_16px_48px_rgba(16,185,129,0.2)]'
-                : 'border-white/[0.08] bg-zinc-900/40 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_40px_rgba(0,0,0,0.5)] hover:border-zinc-700/80 hover:bg-zinc-900/50'
+                ? 'border-emerald-500/60 bg-zinc-900/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_20px_50px_rgba(16,185,129,0.25)]'
+                : 'border-white/[0.12] bg-zinc-900/85 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.65)] hover:border-zinc-700 hover:bg-zinc-900/95'
             }`}
           >
             {/* Subtle Dynamic Radial Pointer Illumination Layer */}
@@ -432,17 +432,17 @@ export default function QRUpload({ onAnalysisComplete }) {
 
                 {/* Informational Typographic Hierarchy */}
                 <div className="mt-5 space-y-1.5 max-w-md">
-                  <p className="text-base font-medium tracking-tight text-zinc-100">
+                  <p className="text-base font-semibold tracking-tight text-zinc-100">
                     {isDragging ? 'Drop QR image to stage for analysis' : 'Choose a QR image or drag and drop here'}
                   </p>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-300 leading-relaxed">
                     Supported formats: PNG, JPG, JPEG, WEBP. Destination routing is quarantined and not opened automatically.
                   </p>
                 </div>
 
                 {/* Tactile Action Button */}
                 <div className="mt-6">
-                  <span className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-800/80 px-4 py-2 text-xs font-medium text-zinc-200 shadow-xs transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-zinc-600 group-hover:bg-zinc-800 group-hover:text-white motion-reduce:transition-none">
+                  <span className="inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-xs font-medium text-zinc-100 shadow-xs transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-zinc-600 group-hover:bg-zinc-700 group-hover:text-white motion-reduce:transition-none">
                     <UploadSimple size={15} weight="bold" />
                     <span>Browse files</span>
                   </span>
@@ -456,7 +456,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                   {previewUrl && (
                     <div
                       style={{ transform: 'translateZ(26px)' }}
-                      className="relative flex aspect-square w-full sm:w-52 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.12] bg-zinc-950/90 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+                      className="relative flex aspect-square w-full sm:w-52 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.14] bg-zinc-950 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
                     >
                       {/* Viewport Corner Registration Marks */}
                       <div className="pointer-events-none absolute top-2 left-2 h-3 w-3 border-t-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)] z-20" aria-hidden="true" />
@@ -490,7 +490,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                     <div>
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
-                          <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 block">
+                          <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 block">
                             Image Staged
                           </span>
                           <h3 className="mt-1 truncate text-base font-semibold text-zinc-100 sm:text-lg">
@@ -500,7 +500,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                         <button
                           type="button"
                           onClick={handleReset}
-                          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
                           aria-label="Remove selected file"
                           title="Remove file"
                         >
@@ -509,21 +509,21 @@ export default function QRUpload({ onAnalysisComplete }) {
                       </div>
 
                       {/* Technical Metadata Specifications */}
-                      <dl className="mt-5 grid grid-cols-2 gap-4 text-xs sm:grid-cols-3 border-t border-zinc-800/80 pt-4">
+                      <dl className="mt-5 grid grid-cols-2 gap-4 text-xs sm:grid-cols-3 border-t border-zinc-800 pt-4">
                         <div>
-                          <dt className="text-zinc-500">Format</dt>
-                          <dd className="mt-0.5 font-mono font-medium text-zinc-300">
+                          <dt className="text-zinc-400 font-medium">Format</dt>
+                          <dd className="mt-0.5 font-mono font-medium text-zinc-100">
                             {selectedFile.type || 'Image'}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-zinc-500">File Size</dt>
-                          <dd className="mt-0.5 font-mono font-medium text-zinc-300">
+                          <dt className="text-zinc-400 font-medium">File Size</dt>
+                          <dd className="mt-0.5 font-mono font-medium text-zinc-100">
                             {formatFileSize(selectedFile.size)}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-zinc-500">Inspection Status</dt>
+                          <dt className="text-zinc-400 font-medium">Inspection Status</dt>
                           <dd className="mt-0.5 font-mono font-medium text-emerald-400">
                             {isScanning ? 'Executing scan...' : 'Ready for analysis'}
                           </dd>
@@ -558,7 +558,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="inline-flex items-center rounded-md border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm font-medium text-zinc-400 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                        className="inline-flex items-center rounded-md border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
                       >
                         Select different file
                       </button>
@@ -569,7 +569,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                       <div
                         role="status"
                         aria-live="polite"
-                        className="mt-5 flex items-start gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/80 p-3.5 text-xs text-zinc-300"
+                        className="mt-5 flex items-start gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/95 p-3.5 text-xs text-zinc-200"
                       >
                         <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
                         <p>

@@ -1,0 +1,9 @@
+Metric,Visual,URL,Fusion
+Evaluation Dataset,342 Clean QR Test Images,"7,500 Held-Out URL Strings",342 Clean QR Test Images
+Input Modality,224x224 RGB Image,Raw URL Character String,QR Image + Decoded URL (if available)
+Accuracy,100.00%,94.36%,N/A — different evaluation set (unpaired data)
+Macro F1,1.0000,0.9435,N/A — different evaluation set (unpaired data)
+Malicious Recall,100.00% (119/119),"97.55% (3,658/3,750)","N/A — different evaluation set (Pipeline: 116 MAL, 3 SUSP)"
+Malicious FNR,0.00%,2.45%,0.00% (0 escapes to SAFE)
+Malicious FN,0,92,0 (0 escapes to SAFE)
+Benign Recall,100.00% (103/103),"91.17% (3,419/3,750)","N/A — different evaluation set (Pipeline: 98 SAFE, 5 SUSP)"

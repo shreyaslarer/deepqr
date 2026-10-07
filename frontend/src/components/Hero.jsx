@@ -1,21 +1,16 @@
-import React, { useRef } from 'react';
-import { ArrowRight } from '@phosphor-icons/react';
+import React, { useRef, useEffect, useState } from 'react';
+import { ArrowRight, ShieldCheck, Eye, Cpu, Broadcast, Compass } from '@phosphor-icons/react';
+import { sound } from '../utils/sound.js';
 
-/**
- * Hero component for DeepQR Shield.
- *
- * Implements an operate-first, research-grade entry point:
- * - Direct headline carrying the core thesis: "Check before you scan."
- * - Precise supporting copy explaining dual-modality (image analysis + URL assessment).
- * - Single dominant action: "Analyze a QR code".
- * - Restrained geometric QR structural element with physical framing and subtle pointer light.
- * - Strict typography and spatial rhythm.
- */
 export default function Hero({ onAnalyzeClick }) {
-  const qrFrameRef = useRef(null);
+  const containerRef = useRef(null);
+  const cardRef = useRef(null);
+  const [telemetry, setTelemetry] = useState({ rotX: 0, rotY: 0 });
+  const [scanMode, setScanMode] = useState('optical'); // 'optical' | 'spectral' | 'matrix'
 
   const handleAction = (e) => {
     e.preventDefault();
+    sound.playClick();
     if (onAnalyzeClick) {
       onAnalyzeClick();
     } else {
@@ -26,125 +21,346 @@ export default function Hero({ onAnalyzeClick }) {
     }
   };
 
-  const handleMouseMove = (e) => {
-    if (!qrFrameRef.current) return;
-    const rect = qrFrameRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    qrFrameRef.current.style.setProperty('--mouse-x', `${x.toFixed(1)}%`);
-    qrFrameRef.current.style.setProperty('--mouse-y', `${y.toFixed(1)}%`);
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    const card = cardRef.current;
+    if (!container || !card) return;
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
+    let isHovered = false;
+    let animationFrameId;
+
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Normalized coordinates from -1 to 1
+      const normX = (x / rect.width - 0.5) * 2;
+      const normY = (y / rect.height - 0.5) * 2;
+
+      // Max tilt angles: 20 deg X, 24 deg Y
+      targetRotX = -normY * 20;
+      targetRotY = normX * 24;
+
+      // Calculate specular light position
+      const lightX = ((x / rect.width) * 100).toFixed(1);
+      const lightY = ((y / rect.height) * 100).toFixed(1);
+      card.style.setProperty('--light-x', `${lightX}%`);
+      card.style.setProperty('--light-y', `${lightY}%`);
+    };
+
+    const handleMouseEnter = () => {
+      isHovered = true;
+    };
+
+    const handleMouseLeave = () => {
+      isHovered = false;
+      targetRotX = 0;
+      targetRotY = 0;
+    };
+
+    container.addEventListener('mousemove', handleMouseMove, { passive: true });
+    container.addEventListener('mouseenter', handleMouseEnter);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
+    // Spring interpolation loop (Apple WWDC 2018 damping 1.0 equivalent)
+    const springDamping = 0.08;
+    let tickCount = 0;
+
+    const updatePhysics = () => {
+      tickCount++;
+
+      // Subtle ambient breathing float when idle
+      const idleFloatX = isHovered ? 0 : Math.sin(tickCount * 0.02) * 3;
+      const idleFloatY = isHovered ? 0 : Math.cos(tickCount * 0.015) * 4;
+
+      currentRotX += (targetRotX + idleFloatX - currentRotX) * springDamping;
+      currentRotY += (targetRotY + idleFloatY - currentRotY) * springDamping;
+
+      card.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+
+      // Update telemetry display every 6 frames to avoid DOM thrashing
+      if (tickCount % 6 === 0) {
+        setTelemetry({
+          rotX: Math.round(currentRotX),
+          rotY: Math.round(currentRotY),
+        });
+      }
+
+      animationFrameId = requestAnimationFrame(updatePhysics);
+    };
+
+    updatePhysics();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseenter', handleMouseEnter);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative w-full border-b border-zinc-800/80 bg-zinc-950 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
+      className="relative w-full border-b border-zinc-800/80 bg-zinc-950/40 backdrop-blur-xs pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Editorial & Operational Content */}
           <div className="lg:col-span-7">
+            {/* Live Telemetry Status Pill */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/25 bg-emerald-950/30 px-3.5 py-1 text-xs font-mono text-emerald-400 backdrop-blur-md shadow-[0_0_24px_rgba(16,185,129,0.12)] mb-6 transition-all duration-300 hover:border-emerald-500/40">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-radar-pulse absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="tracking-wider uppercase font-medium">
+                Defensive Neural Core // v2.4 Active
+              </span>
+            </div>
+
+            {/* Kinetic Shimmer Headline */}
             <h1
               id="hero-heading"
-              className="text-4xl font-semibold tracking-[-0.03em] text-zinc-100 sm:text-5xl lg:text-6xl leading-[1.06]"
+              className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl lg:text-6xl leading-[1.06] select-none"
             >
-              Check before you scan.
+              <span className="kinetic-text-shimmer block">
+                Check before you scan.
+              </span>
             </h1>
 
             <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-zinc-400 sm:text-lg">
               DeepQR Shield analyzes both the physical QR code image and its decoded URL destination to identify tampering, obfuscation, and malicious redirects before your device opens the link.
             </p>
 
-            {/* Single Dominant Primary Action */}
-            <div className="mt-8 flex items-center">
+            {/* Single Dominant Primary Action with Tactile Spring Response */}
+            <div className="mt-8 flex items-center gap-4">
               <a
                 href="#analyze"
                 onClick={handleAction}
-                className="inline-flex items-center gap-2 rounded-md bg-zinc-100 px-5 py-2.5 text-sm font-medium text-zinc-950 shadow-xs transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 motion-reduce:transition-none motion-reduce:transform-none"
+                className="group relative inline-flex items-center gap-2.5 rounded-md bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-950 shadow-md transition-all duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 motion-reduce:transition-none motion-reduce:transform-none"
               >
                 <span>Analyze a QR code</span>
-                <ArrowRight size={16} weight="bold" />
+                <ArrowRight
+                  size={16}
+                  weight="bold"
+                  className="transition-transform duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1"
+                />
               </a>
+
+              <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-zinc-500">
+                <ShieldCheck size={16} className="text-emerald-400" />
+                <span>Zero redirect execution</span>
+              </div>
             </div>
           </div>
 
-          {/* Restrained Technical QR Geometry */}
-          <div className="flex items-center justify-center lg:col-span-5" aria-hidden="true">
+          {/* 3D Realistic Holographic Scanner Core */}
+          <div
+            ref={containerRef}
+            className="flex items-center justify-center lg:col-span-5 perspective-1200 py-6"
+            aria-hidden="true"
+          >
             <div
-              ref={qrFrameRef}
-              onMouseMove={handleMouseMove}
-              style={{ '--mouse-x': '50%', '--mouse-y': '50%' }}
-              className="group relative flex aspect-square w-full max-w-[320px] flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-900/40 p-8 sm:max-w-[360px] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)] backdrop-blur-md transition-all duration-200 hover:border-zinc-700/80 hover:bg-zinc-900/50"
+              ref={cardRef}
+              style={{
+                '--light-x': '50%',
+                '--light-y': '50%',
+                transformStyle: 'preserve-3d',
+              }}
+              className="relative flex aspect-square w-full max-w-[340px] sm:max-w-[380px] flex-col justify-between rounded-2xl border border-white/[0.12] bg-zinc-900/60 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_25px_60px_rgba(16,185,129,0.1)] cursor-grab active:cursor-grabbing select-none"
             >
-              {/* Subtle Dynamic Radial Pointer Illumination Layer */}
+              {/* Interactive 3D Mode Selector Tabs (translateZ: 92px) */}
               <div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 motion-reduce:hidden"
+                style={{ transform: 'translateZ(92px)' }}
+                className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 p-1 rounded-lg bg-zinc-950/90 border border-white/[0.14] backdrop-blur-xl shadow-xl z-30"
+              >
+                {[
+                  { id: 'optical', label: '01 OPTICAL', icon: Eye },
+                  { id: 'spectral', label: '02 SPECTRAL', icon: Broadcast },
+                  { id: 'matrix', label: '03 RETICLE', icon: Compass },
+                ].map((m) => {
+                  const Icon = m.icon;
+                  const isCur = scanMode === m.id;
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        sound.playClick();
+                        setScanMode(m.id);
+                      }}
+                      className={`flex items-center gap-1 px-2.5 py-1 text-[9px] font-mono tracking-wider rounded transition-all duration-150 active:scale-[0.95] ${
+                        isCur
+                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-xs'
+                          : 'text-zinc-400 hover:text-zinc-200'
+                      }`}
+                    >
+                      <Icon size={11} className={isCur ? 'text-emerald-400' : 'text-zinc-500'} />
+                      <span>{m.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Layer 0: Dynamic Specular Reflection Sheen */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl opacity-70 transition-opacity duration-300 motion-reduce:hidden"
                 style={{
-                  background: 'radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.035), transparent 70%)',
+                  background:
+                    'radial-gradient(400px circle at var(--light-x, 50%) var(--light-y, 50%), rgba(52, 211, 153, 0.12), rgba(255, 255, 255, 0.04) 30%, transparent 70%)',
                 }}
               />
 
-              {/* Corner Framing Brackets */}
-              <div className="absolute top-2.5 left-2.5 h-3 w-3 border-t-2 border-l-2 border-zinc-700/60 transition-colors group-hover:border-zinc-600" />
-              <div className="absolute top-2.5 right-2.5 h-3 w-3 border-t-2 border-r-2 border-zinc-700/60 transition-colors group-hover:border-zinc-600" />
-              <div className="absolute bottom-2.5 left-2.5 h-3 w-3 border-b-2 border-l-2 border-zinc-700/60 transition-colors group-hover:border-zinc-600" />
-              <div className="absolute bottom-2.5 right-2.5 h-3 w-3 border-b-2 border-r-2 border-zinc-700/60 transition-colors group-hover:border-zinc-600" />
-
-              {/* Top Row: Dual Finder Patterns */}
-              <div className="relative z-10 flex items-center justify-between">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="text-zinc-600 transition-colors group-hover:text-zinc-500">
-                  <rect x="1" y="1" width="62" height="62" rx="4" stroke="currentColor" strokeWidth="2" />
-                  <rect x="8" y="8" width="48" height="48" fill="#18181b" stroke="#3f3f46" strokeWidth="1" />
-                  <rect x="18" y="18" width="28" height="28" rx="2" fill="#d4d4d8" />
-                </svg>
-
-                {/* Subtle structural timing coordinate line */}
-                <div className="mx-3 flex-1 border-b border-dashed border-zinc-800" />
-
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="text-zinc-600 transition-colors group-hover:text-zinc-500">
-                  <rect x="1" y="1" width="62" height="62" rx="4" stroke="currentColor" strokeWidth="2" />
-                  <rect x="8" y="8" width="48" height="48" fill="#18181b" stroke="#3f3f46" strokeWidth="1" />
-                  <rect x="18" y="18" width="28" height="28" rx="2" fill="#d4d4d8" />
-                </svg>
+              {/* Layer 1: 3D Tactical Coordinate Grid (translateZ: 18px) */}
+              <div
+                style={{ transform: 'translateZ(18px)' }}
+                className="pointer-events-none absolute inset-4 rounded-xl border border-dashed border-zinc-800/80"
+              >
+                {/* Coordinate tick marks */}
+                <div className="absolute top-1/2 left-0 h-px w-2 bg-zinc-700" />
+                <div className="absolute top-1/2 right-0 h-px w-2 bg-zinc-700" />
+                <div className="absolute top-0 left-1/2 w-px h-2 bg-zinc-700" />
+                <div className="absolute bottom-0 left-1/2 w-px h-2 bg-zinc-700" />
               </div>
 
-              {/* Center Inspection Grid Vector */}
-              <div className="relative z-10 my-6 flex items-center justify-center">
-                <div className="grid grid-cols-5 gap-2">
-                  <div className="h-2 w-2 rounded-xs bg-zinc-700" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-600" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-700" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-500" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-500" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-600" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-emerald-500/80" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-800" />
-                  <div className="h-2 w-2 rounded-xs bg-zinc-600" />
+              {/* Layer 2: 3D Holographic Laser Scanning Beam (translateZ: 36px) */}
+              <div
+                style={{ transform: 'translateZ(36px)' }}
+                className="pointer-events-none absolute inset-x-6 top-6 bottom-6 overflow-hidden"
+              >
+                <div className="relative h-full w-full">
+                  <div
+                    className={`animate-laser-sweep absolute left-0 right-0 h-0.5 shadow-lg ${
+                      scanMode === 'spectral'
+                        ? 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_16px_rgba(34,211,238,0.9)]'
+                        : scanMode === 'matrix'
+                        ? 'bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_16px_rgba(251,191,36,0.9)]'
+                        : 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_14px_rgba(52,211,153,0.9)]'
+                    }`}
+                  >
+                    <div className="absolute -inset-y-3 inset-x-0 bg-emerald-400/10 blur-xs" />
+                  </div>
                 </div>
               </div>
 
-              {/* Bottom Row: Third Finder Pattern and Dual-Path Signal Node */}
-              <div className="relative z-10 flex items-center justify-between">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="text-zinc-600 transition-colors group-hover:text-zinc-500">
-                  <rect x="1" y="1" width="62" height="62" rx="4" stroke="currentColor" strokeWidth="2" />
-                  <rect x="8" y="8" width="48" height="48" fill="#18181b" stroke="#3f3f46" strokeWidth="1" />
-                  <rect x="18" y="18" width="28" height="28" rx="2" fill="#d4d4d8" />
-                </svg>
+              {/* Layer 3: 3D QR Matrix Geometry (translateZ: 54px) */}
+              <div
+                style={{ transform: 'translateZ(54px)' }}
+                className="relative z-10 flex flex-col justify-between h-full"
+              >
+                {/* Top Row: Dual 3D Finder Patterns */}
+                <div className="flex items-center justify-between">
+                  {/* Top-Left Finder Pattern with 3D Depth */}
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                    <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
+                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                    </div>
+                  </div>
 
-                {/* Subtle structural timing coordinate line */}
-                <div className="mx-3 flex-1 border-b border-dashed border-zinc-800" />
+                  {/* Optical Timing Line */}
+                  <div className="mx-3 flex-1 border-b border-dashed border-emerald-500/40" />
 
-                {/* Restrained Alignment Guide Marker */}
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-zinc-700">
-                  <rect x="1" y="1" width="38" height="38" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                  <rect x="14" y="14" width="12" height="12" rx="1" fill="#71717a" />
-                </svg>
+                  {/* Top-Right Finder Pattern */}
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                    <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
+                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Center 3D Micro-Module Array */}
+                <div className="my-5 flex items-center justify-center">
+                  <div className="grid grid-cols-6 gap-2 p-2 rounded-lg bg-zinc-950/60 border border-white/[0.04]">
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-600" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-500" />
+
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-500" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-500/80" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+
+                    <div className="h-2.5 w-2.5 rounded-xs bg-emerald-400/90" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-700" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-600" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-800" />
+                    <div className="h-2.5 w-2.5 rounded-xs bg-zinc-400" />
+                  </div>
+                </div>
+
+                {/* Bottom Row: Third Finder Pattern & Alignment Target */}
+                <div className="flex items-center justify-between">
+                  {/* Bottom-Left Finder Pattern */}
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-zinc-500 bg-zinc-900/90 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                    <div className="h-10 w-10 rounded-sm border border-zinc-600 bg-zinc-950 flex items-center justify-center">
+                      <div className="h-6 w-6 rounded-xs bg-zinc-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                    </div>
+                  </div>
+
+                  <div className="mx-3 flex-1 border-b border-dashed border-emerald-500/40" />
+
+                  {/* Optical Alignment Marker */}
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-md border border-zinc-600 bg-zinc-900/80">
+                    <div className="h-4 w-4 rounded-xs bg-zinc-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Layer 4: Floating 3D HUD & Telemetry Layer (translateZ: 78px) */}
+              <div
+                style={{ transform: 'translateZ(78px)' }}
+                className="pointer-events-none absolute inset-0 p-3 flex flex-col justify-between"
+              >
+                {/* 3D Corner Registration Brackets */}
+                <div className="absolute top-2 left-2 h-3.5 w-3.5 border-t-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                <div className="absolute top-2 right-2 h-3.5 w-3.5 border-t-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                <div className="absolute bottom-2 left-2 h-3.5 w-3.5 border-b-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                <div className="absolute bottom-2 right-2 h-3.5 w-3.5 border-b-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+
+                {/* Floating Top Telemetry Badge */}
+                <div className="flex items-center justify-between px-2 pt-1 text-[10px] font-mono text-emerald-400">
+                  <span className="flex items-center gap-1 bg-zinc-950/80 px-2 py-0.5 rounded border border-emerald-500/30 backdrop-blur-md">
+                    <Eye size={12} />
+                    <span>
+                      {scanMode === 'spectral'
+                        ? 'SPECTRAL DENSITY'
+                        : scanMode === 'matrix'
+                        ? 'RETICLE LOCK'
+                        : 'OPTICAL 3D MATRIX'}
+                    </span>
+                  </span>
+                  <span className="bg-zinc-950/80 px-2 py-0.5 rounded border border-zinc-800 text-zinc-400 backdrop-blur-md">
+                    Z-AXIS: +78mm
+                  </span>
+                </div>
+
+                {/* Floating Bottom Telemetry Readout */}
+                <div className="flex items-center justify-between px-2 pb-1 text-[10px] font-mono text-zinc-400">
+                  <span className="bg-zinc-950/80 px-2 py-0.5 rounded border border-zinc-800 backdrop-blur-md">
+                    TILT: [{telemetry.rotX}deg, {telemetry.rotY}deg]
+                  </span>
+                  <span className="flex items-center gap-1 bg-zinc-950/80 px-2 py-0.5 rounded border border-emerald-500/30 text-emerald-400 backdrop-blur-md">
+                    <Cpu size={12} />
+                    <span>SYNAPSE OK</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

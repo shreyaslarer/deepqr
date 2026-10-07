@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import SpatialBackground from './components/SpatialBackground.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import QRUpload from './components/QRUpload.jsx';
-import PipelineVisualization from './components/PipelineVisualization.jsx';
 import RiskAssessmentResult from './components/RiskAssessmentResult.jsx';
-import ResearchContext from './components/ResearchContext.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('analyze');
 
   useEffect(() => {
-    const sections = ['analyze', 'how-it-works', 'research'];
+    const sections = ['analyze', 'results'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -61,14 +60,13 @@ export default function App() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-950 text-zinc-100">
+    <div className="relative flex min-h-screen flex-col bg-zinc-950 text-zinc-100 overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-300">
+      <SpatialBackground />
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
         <Hero onAnalyzeClick={handleAnalyzeClick} />
         <QRUpload />
-        <PipelineVisualization />
         <RiskAssessmentResult />
-        <ResearchContext />
       </main>
       <Footer onNavigate={handleNavigate} />
     </div>

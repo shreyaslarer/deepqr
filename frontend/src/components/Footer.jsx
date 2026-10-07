@@ -15,8 +15,7 @@ import { QrCode } from '@phosphor-icons/react';
 export default function Footer({ onNavigate }) {
   const navItems = [
     { id: 'analyze', label: 'Analyze' },
-    { id: 'how-it-works', label: 'How It Works' },
-    { id: 'research', label: 'Research' },
+    { id: 'results', label: 'Report' },
   ];
 
   const handleNavClick = (e, id) => {
@@ -56,7 +55,7 @@ export default function Footer({ onNavigate }) {
             </p>
 
             <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-              An experimental research prototype for defensive QR threat analysis. Inspects visual patterns and destination routing before destination links are opened.
+              Defensive security tool for QR threat analysis. Inspects visual patterns and destination routing before destination links are opened.
             </p>
           </div>
 
@@ -75,13 +74,13 @@ export default function Footer({ onNavigate }) {
           </nav>
         </div>
 
-        {/* Responsible Scientific Metadata */}
+        {/* Security & Prototype Notice */}
         <div className="mt-10 border-t border-zinc-900 pt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-[11px] text-zinc-600">
           <p>
-            Defensive academic research prototype. Model-based indicators do not guarantee absolute safety.
+            Defensive security inspection prototype. Automated indicators provide risk guidance and should be verified before opening sensitive links.
           </p>
           <p>
-            Informed by De Guzman et al. (2025).
+            DeepQR Shield Security Architecture.
           </p>
         </div>
       </div>

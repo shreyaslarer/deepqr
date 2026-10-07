@@ -119,15 +119,55 @@ export default function QRUpload() {
     fileInputRef.current?.click();
   };
 
-  // Pointer position tracking via CSS variables without re-rendering React component
-  const handleMouseMove = (e) => {
-    if (!surfaceRef.current) return;
-    const rect = surfaceRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    surfaceRef.current.style.setProperty('--mouse-x', `${x.toFixed(1)}%`);
-    surfaceRef.current.style.setProperty('--mouse-y', `${y.toFixed(1)}%`);
-  };
+  // 3D Perspective Spring Physics (Apple / Emil Kowalski)
+  useEffect(() => {
+    const surface = surfaceRef.current;
+    if (!surface) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
+    let animationFrameId;
+
+    const onMouseMove = (e) => {
+      const rect = surface.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const normX = (x / rect.width - 0.5) * 2;
+      const normY = (y / rect.height - 0.5) * 2;
+      targetRotX = -normY * 6; // subtle, tactile 6 degrees
+      targetRotY = normX * 8;
+      surface.style.setProperty('--mouse-x', `${((x / rect.width) * 100).toFixed(1)}%`);
+      surface.style.setProperty('--mouse-y', `${((y / rect.height) * 100).toFixed(1)}%`);
+    };
+
+    const onMouseLeave = () => {
+      targetRotX = 0;
+      targetRotY = 0;
+    };
+
+    surface.addEventListener('mousemove', onMouseMove, { passive: true });
+    surface.addEventListener('mouseleave', onMouseLeave);
+
+    const updatePhysics = () => {
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+      surface.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+      animationFrameId = requestAnimationFrame(updatePhysics);
+    };
+
+    updatePhysics();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      surface.removeEventListener('mousemove', onMouseMove);
+      surface.removeEventListener('mouseleave', onMouseLeave);
+    };
+  }, []);
 
   return (
     <section
@@ -183,17 +223,21 @@ export default function QRUpload() {
           </div>
         )}
 
-        {/* Premium Layered Inspection Surface */}
-        <div
-          ref={surfaceRef}
-          onMouseMove={handleMouseMove}
-          style={{ '--mouse-x': '50%', '--mouse-y': '50%' }}
-          className={`group relative overflow-hidden rounded-2xl border transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${
-            isDragging
-              ? 'border-zinc-500 bg-zinc-900/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_12px_40px_rgba(0,0,0,0.48)]'
-              : 'border-white/[0.08] bg-zinc-900/40 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.36)] hover:border-zinc-700/80 hover:bg-zinc-900/50'
-          }`}
-        >
+        {/* Premium Layered 3D Inspection Surface */}
+        <div className="perspective-1000 py-2">
+          <div
+            ref={surfaceRef}
+            style={{
+              '--mouse-x': '50%',
+              '--mouse-y': '50%',
+              transformStyle: 'preserve-3d',
+            }}
+            className={`group relative overflow-hidden rounded-2xl border transition-shadow duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none motion-reduce:transition-none ${
+              isDragging
+                ? 'border-emerald-500/60 bg-zinc-900/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_16px_48px_rgba(16,185,129,0.2)]'
+                : 'border-white/[0.08] bg-zinc-900/40 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_40px_rgba(0,0,0,0.5)] hover:border-zinc-700/80 hover:bg-zinc-900/50'
+            }`}
+          >
           {/* Subtle Dynamic Radial Pointer Illumination Layer */}
           <div
             className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 motion-reduce:hidden"
@@ -285,25 +329,35 @@ export default function QRUpload() {
             /* Selected File State / Staged Inspection Dossier */
             <div className="p-6 sm:p-8">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-                {/* Optical Inspection Viewport */}
+                {/* Optical Inspection Viewport with 3D Laser Scan Sweep */}
                 {previewUrl && (
-                  <div className="relative flex aspect-square w-full sm:w-52 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/90 p-3 shadow-inner">
+                  <div
+                    style={{ transform: 'translateZ(26px)' }}
+                    className="relative flex aspect-square w-full sm:w-52 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.12] bg-zinc-950/90 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+                  >
                     {/* Viewport Corner Registration Marks */}
-                    <div className="pointer-events-none absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-zinc-700" aria-hidden="true" />
-                    <div className="pointer-events-none absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-zinc-700" aria-hidden="true" />
-                    <div className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-zinc-700" aria-hidden="true" />
-                    <div className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-zinc-700" aria-hidden="true" />
+                    <div className="pointer-events-none absolute top-2 left-2 h-3 w-3 border-t-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)] z-20" aria-hidden="true" />
+                    <div className="pointer-events-none absolute top-2 right-2 h-3 w-3 border-t-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)] z-20" aria-hidden="true" />
+                    <div className="pointer-events-none absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)] z-20" aria-hidden="true" />
+                    <div className="pointer-events-none absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.5)] z-20" aria-hidden="true" />
 
                     {/* Subtle Crosshair Coordinate Lines */}
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-15" aria-hidden="true">
-                      <div className="h-full w-px bg-zinc-600" />
-                      <div className="absolute w-full h-px bg-zinc-600" />
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20" aria-hidden="true">
+                      <div className="h-full w-px bg-emerald-500/40" />
+                      <div className="absolute w-full h-px bg-emerald-500/40" />
+                    </div>
+
+                    {/* Active Optical Laser Scan Beam */}
+                    <div className="pointer-events-none absolute inset-x-2 top-2 bottom-2 overflow-hidden z-20">
+                      <div className="animate-laser-sweep absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_rgba(52,211,153,0.9)]">
+                        <div className="absolute -inset-y-2 inset-x-0 bg-emerald-400/15 blur-xs" />
+                      </div>
                     </div>
 
                     <img
                       src={previewUrl}
-                      alt="Staged QR code specimen"
-                      className="relative z-10 max-h-full max-w-full object-contain"
+                      alt="Staged QR code"
+                      className="relative z-10 max-h-full max-w-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
                     />
                   </div>
                 )}
@@ -314,7 +368,7 @@ export default function QRUpload() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
                         <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 block">
-                          Specimen Staged
+                          Image Staged
                         </span>
                         <h3 className="mt-1 truncate text-base font-semibold text-zinc-100 sm:text-lg">
                           {selectedFile.name}
@@ -346,9 +400,9 @@ export default function QRUpload() {
                         </dd>
                       </div>
                       <div>
-                        <dt className="text-zinc-500">Pipeline Status</dt>
+                        <dt className="text-zinc-500">Inspection Status</dt>
                         <dd className="mt-0.5 font-mono font-medium text-zinc-300">
-                          Staged for inspection
+                          Ready for analysis
                         </dd>
                       </div>
                     </dl>
@@ -383,7 +437,7 @@ export default function QRUpload() {
                     >
                       <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
                       <p>
-                        Image successfully staged for inspection. Detection and analytical models will be integrated in subsequent phases.
+                        Image staged for security inspection. Review the assessment report below.
                       </p>
                     </div>
                   )}
@@ -393,6 +447,7 @@ export default function QRUpload() {
           )}
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }

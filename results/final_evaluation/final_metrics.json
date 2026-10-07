@@ -1,0 +1,161 @@
+{
+  "visual_model": {
+    "model": "ResNet18",
+    "dataset": "data/clean_qr/test",
+    "total_samples": 342,
+    "accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "benign": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 103
+      },
+      "malicious": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 119
+      },
+      "tampered": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 120
+      }
+    },
+    "confusion_matrix": [
+      [
+        103,
+        0,
+        0
+      ],
+      [
+        0,
+        119,
+        0
+      ],
+      [
+        0,
+        0,
+        120
+      ]
+    ],
+    "malicious_false_negatives": 0,
+    "malicious_false_negative_rate": 0.0
+  },
+  "url_model": {
+    "model": "URLCharCNN",
+    "dataset": "Held-out 15% URL test split (from url_train_50k.csv)",
+    "total_samples": 7500,
+    "accuracy": 0.9436,
+    "macro_precision": 0.9454092245557939,
+    "macro_recall": 0.9436,
+    "macro_f1": 0.9435426684580444,
+    "per_class": {
+      "benign": {
+        "precision": 0.9737966391341498,
+        "recall": 0.9117333333333333,
+        "f1": 0.9417435614929073,
+        "support": 3750
+      },
+      "malicious": {
+        "precision": 0.917021809977438,
+        "recall": 0.9754666666666667,
+        "f1": 0.9453417754231813,
+        "support": 3750
+      }
+    },
+    "confusion_matrix": [
+      [
+        3419,
+        331
+      ],
+      [
+        92,
+        3658
+      ]
+    ],
+    "malicious_false_negatives": 92,
+    "malicious_false_negative_rate": 0.024533333333333334
+  },
+  "fusion_pipeline": {
+    "evaluation_dataset": "data/clean_qr/test",
+    "total_test_qr_images": 342,
+    "qr_decode_rate_pct": 57.01754385964912,
+    "decoded_count": 195,
+    "decode_failures": 147,
+    "url_payload_count": 77,
+    "non_url_payload_count": 118,
+    "decision_counts": {
+      "SAFE": 98,
+      "SUSPICIOUS": 128,
+      "MALICIOUS": 116
+    },
+    "security_metrics": {
+      "malicious_safe_escapes": 0,
+      "malicious_escape_fnr": 0.0,
+      "benign_classified_as_malicious": 0,
+      "tampered_classified_as_safe": 0
+    },
+    "breakdown_by_ground_truth": {
+      "benign": {
+        "SAFE": 98,
+        "SUSPICIOUS": 5
+      },
+      "malicious": {
+        "MALICIOUS": 116,
+        "SUSPICIOUS": 3
+      },
+      "tampered": {
+        "SUSPICIOUS": 120
+      }
+    },
+    "documentation_statement": "The fusion evaluation demonstrates pipeline behavior on the QR test set but does not constitute a conventional paired multimodal classification benchmark."
+  },
+  "consolidated_summary": [
+    {
+      "Dataset / Component": "Clean QR Test Images",
+      "Samples": "342 images",
+      "Model": "ResNet18 (Fine-Tuned)",
+      "Accuracy": "100.00%",
+      "Macro F1": "1.0000",
+      "Malicious Recall": "100.00%",
+      "Malicious FNR": "0.00%",
+      "Notes": "Image-level threat and module tampering detection"
+    },
+    {
+      "Dataset / Component": "Held-Out URL Strings",
+      "Samples": "7,500 URLs",
+      "Model": "URLCharCNN (1D CNN)",
+      "Accuracy": "94.36%",
+      "Macro F1": "0.9435",
+      "Malicious Recall": "97.55%",
+      "Malicious FNR": "2.45%",
+      "Notes": "Lexical phishing and threat URL detection"
+    },
+    {
+      "Dataset / Component": "Multimodal Fusion Pipeline",
+      "Samples": "342 images",
+      "Model": "Decision-Level Rule Fusion",
+      "Accuracy": "N/A (unpaired)",
+      "Macro F1": "N/A (unpaired)",
+      "Malicious Recall": "N/A (unpaired)",
+      "Malicious FNR": "0.00%",
+      "Notes": "Dual-modality scoring (0.5/0.5); 0 malicious escapes to SAFE"
+    },
+    {
+      "Dataset / Component": "Robustness Experiment (Step 07)",
+      "Samples": "4,788 evaluations (14 conditions x 342)",
+      "Model": "Full Pipeline under Distortion",
+      "Accuracy": "35.1% - 100.0%",
+      "Macro F1": "0.1732 - 1.0000",
+      "Malicious Recall": "0.0% - 100.0%",
+      "Malicious FNR": "0.00% - 5.88%",
+      "Notes": "Resilient to noise/JPEG/brightness; geometric tilts cause decoder collapse and shift predictions to SUSPICIOUS"
+    }
+  ]
+}

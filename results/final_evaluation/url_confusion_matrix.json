@@ -1,0 +1,16 @@
+{
+  "classes": [
+    "benign",
+    "malicious"
+  ],
+  "confusion_matrix": [
+    [
+      3419,
+      331
+    ],
+    [
+      92,
+      3658
+    ]
+  ]
+}

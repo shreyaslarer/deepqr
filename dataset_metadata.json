@@ -1,0 +1,104 @@
+{
+  "project_name": "DeepQR Shield",
+  "version": "1.0.0",
+  "date_created": "2026-10-07",
+  "qr_image_dataset": {
+    "root_directory": "data/clean_qr/",
+    "sanitization_protocol": "Step 02 leakage-free cleaning; fixed 224x224 RGB resizing to eliminate dimension-class correlation",
+    "normalization": {
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    },
+    "classes": ["benign", "malicious", "tampered"],
+    "class_to_idx": {
+      "benign": 0,
+      "malicious": 1,
+      "tampered": 2
+    },
+    "splits": {
+      "train": {
+        "directory": "data/clean_qr/train/",
+        "total_samples": 1600,
+        "class_distribution": {
+          "benign": 483,
+          "malicious": 557,
+          "tampered": 560
+        }
+      },
+      "val": {
+        "directory": "data/clean_qr/val/",
+        "total_samples": 342,
+        "class_distribution": {
+          "benign": 103,
+          "malicious": 119,
+          "tampered": 120
+        }
+      },
+      "test": {
+        "directory": "data/clean_qr/test/",
+        "total_samples": 342,
+        "class_distribution": {
+          "benign": 103,
+          "malicious": 119,
+          "tampered": 120
+        }
+      }
+    },
+    "total_images": 2284
+  },
+  "url_dataset": {
+    "file_paths": [
+      "data/url/url_train_50k.csv",
+      "url_train_50k.csv"
+    ],
+    "total_unique_urls": 50000,
+    "class_balance": {
+      "benign": 25000,
+      "malicious": 25000
+    },
+    "classes": ["benign", "malicious"],
+    "class_to_idx": {
+      "benign": 0,
+      "malicious": 1
+    },
+    "random_seed": 42,
+    "splits": {
+      "train": {
+        "ratio": 0.70,
+        "total_samples": 35000,
+        "class_distribution": {
+          "benign": 17500,
+          "malicious": 17500
+        }
+      },
+      "val": {
+        "ratio": 0.15,
+        "total_samples": 7500,
+        "class_distribution": {
+          "benign": 3750,
+          "malicious": 3750
+        }
+      },
+      "test": {
+        "ratio": 0.15,
+        "total_samples": 7500,
+        "class_distribution": {
+          "benign": 3750,
+          "malicious": 3750
+        }
+      }
+    },
+    "tokenization": {
+      "level": "character",
+      "vocabulary_size": 144,
+      "pad_token_id": 0,
+      "unk_token_id": 1,
+      "max_sequence_length": 200,
+      "truncation_rate_pct": 1.37
+    }
+  },
+  "multimodal_dataset_relationship": {
+    "paired_status": "unpaired",
+    "documentation_statement": "The QR image dataset and the URL dataset originate from separate distributions and are not naturally paired. Multimodal decision-level fusion is implemented via rule-based decision logic rather than joint multimodal gradient descent."
+  }
+}

@@ -25,6 +25,117 @@
 
 :root {
   color-scheme: dark;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* 3D Perspective & Spatial Transform Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+/* Kinetic Shimmer Typography */
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.kinetic-text-shimmer {
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #a1a1aa 22%,
+    #6ee7b7 45%,
+    #ffffff 58%,
+    #d4d4d8 78%,
+    #ffffff 100%
+  );
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* 3D Optical Laser Scanning Beam */
+@keyframes laser-sweep {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% + 4px);
+    opacity: 0;
+  }
+}
+
+.animate-laser-sweep {
+  animation: laser-sweep 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Radar Telemetry Pulse */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+}
+
+.animate-radar-pulse {
+  animation: radar-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Hologram Iridescent Security Foil */
+@keyframes hologram-sheen {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.hologram-foil {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(52, 211, 153, 0.12) 30%,
+    rgba(56, 189, 248, 0.08) 50%,
+    rgba(251, 191, 36, 0.08) 70%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 200%;
+  animation: hologram-sheen 6s ease infinite;
 }
 
 body {

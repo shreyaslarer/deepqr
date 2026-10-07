@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import SpatialBackground from './components/SpatialBackground.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import DefenseProtocolRibbon from './components/DefenseProtocolRibbon.jsx';
 import QRUpload from './components/QRUpload.jsx';
 import RiskAssessmentResult from './components/RiskAssessmentResult.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('analyze');
+  const [currentSpecimen, setCurrentSpecimen] = useState('safe');
 
   useEffect(() => {
     const sections = ['analyze', 'results'];
@@ -59,14 +61,26 @@ export default function App() {
     }
   };
 
+  const handleAnalysisComplete = (specimenKey) => {
+    setCurrentSpecimen(specimenKey);
+    // Smoothly transition focus to the verified report
+    setTimeout(() => {
+      handleNavigate('results');
+    }, 300);
+  };
+
   return (
     <div className="relative flex min-h-screen flex-col bg-zinc-950 text-zinc-100 overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-300">
       <SpatialBackground />
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
       <main className="relative z-10 flex-1">
         <Hero onAnalyzeClick={handleAnalyzeClick} />
-        <QRUpload />
-        <RiskAssessmentResult />
+        <DefenseProtocolRibbon />
+        <QRUpload onAnalysisComplete={handleAnalysisComplete} />
+        <RiskAssessmentResult
+          activeSpecimenKey={currentSpecimen}
+          onSpecimenChange={setCurrentSpecimen}
+        />
       </main>
       <Footer onNavigate={handleNavigate} />
     </div>

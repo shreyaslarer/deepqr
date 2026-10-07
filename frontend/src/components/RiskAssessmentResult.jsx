@@ -67,12 +67,23 @@ const DEMO_SPECIMENS = {
  * - Tactile button response (:active scale 0.97, var(--ease-out)).
  * - Zero em-dashes and en-dashes throughout.
  */
-export default function RiskAssessmentResult() {
-  const [activeSpecimenKey, setActiveSpecimenKey] = useState('safe');
+import { sound } from '../utils/sound.js';
+
+export default function RiskAssessmentResult({ activeSpecimenKey = 'safe', onSpecimenChange }) {
+  const [internalSpecimenKey, setInternalSpecimenKey] = useState('safe');
   const [copyFeedback, setCopyFeedback] = useState(false);
   const surfaceRef = useRef(null);
 
-  const specimen = DEMO_SPECIMENS[activeSpecimenKey];
+  const currentKey = activeSpecimenKey || internalSpecimenKey;
+  const specimen = DEMO_SPECIMENS[currentKey] || DEMO_SPECIMENS.safe;
+
+  const handleSelectKey = (key) => {
+    sound.playClick();
+    setInternalSpecimenKey(key);
+    if (onSpecimenChange) {
+      onSpecimenChange(key);
+    }
+  };
 
   // 3D Perspective Spring Physics on Report Card
   useEffect(() => {
@@ -125,6 +136,7 @@ export default function RiskAssessmentResult() {
   }, []);
 
   const handleCopy = async () => {
+    sound.playClick();
     try {
       await navigator.clipboard.writeText(specimen.destination);
       setCopyFeedback(true);
@@ -176,12 +188,12 @@ export default function RiskAssessmentResult() {
               </span>
               {Object.keys(DEMO_SPECIMENS).map((key) => {
                 const item = DEMO_SPECIMENS[key];
-                const isSelected = activeSpecimenKey === key;
+                const isSelected = currentKey === key;
                 return (
                   <button
                     key={key}
                     type="button"
-                    onClick={() => setActiveSpecimenKey(key)}
+                    onClick={() => handleSelectKey(key)}
                     className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.97] motion-reduce:transition-none motion-reduce:transform-none ${
                       isSelected
                         ? 'border border-zinc-700 bg-zinc-800 text-zinc-100 shadow-xs'
@@ -209,7 +221,7 @@ export default function RiskAssessmentResult() {
         <div className="perspective-1000 py-2">
           <div
             ref={surfaceRef}
-            key={activeSpecimenKey}
+            key={currentKey}
             style={{
               '--light-x': '50%',
               '--light-y': '50%',

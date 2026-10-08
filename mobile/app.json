@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "DeepQR Companion",
+    "slug": "deepqr-companion",
+    "version": "1.0.0",
+    "sdkVersion": "57.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow DeepQR Shield Companion to access your camera to scan QR codes."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#09090b",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "permissions": ["CAMERA"]
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow DeepQR Shield Companion to access your camera to scan QR codes."
+        }
+      ]
+    ]
+  }
+}

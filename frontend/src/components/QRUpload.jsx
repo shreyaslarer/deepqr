@@ -6,13 +6,15 @@ import {
   WarningCircle,
   CheckCircle,
   ArrowRight,
-  Sparkle,
-  Cpu,
+  ShieldCheck,
+  DeviceMobile,
 } from '@phosphor-icons/react';
 import { sound } from '../utils/sound.js';
+import MobilePairingModal from './MobilePairingModal.jsx';
 
 const ACCEPTED_TYPES = ['image/png', 'image/jpeg', 'image/webp'];
 const ACCEPTED_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp'];
+const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB limit
 
 function isValidImage(file) {
   if (!file) return false;
@@ -28,53 +30,24 @@ function formatFileSize(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-// In-memory vector specimen generator for interactive test threats
-function createSampleQrDataUrl(type) {
-  const color = type === 'malicious' ? '#f43f5e' : type === 'suspicious' ? '#f59e0b' : '#34d399';
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-    <rect width="100" height="100" fill="#09090b"/>
-    <rect x="8" y="8" width="28" height="28" rx="4" fill="none" stroke="#e4e4e7" stroke-width="3"/>
-    <rect x="15" y="15" width="14" height="14" rx="2" fill="#e4e4e7"/>
-    <rect x="64" y="8" width="28" height="28" rx="4" fill="none" stroke="#e4e4e7" stroke-width="3"/>
-    <rect x="71" y="15" width="14" height="14" rx="2" fill="#e4e4e7"/>
-    <rect x="8" y="64" width="28" height="28" rx="4" fill="none" stroke="#e4e4e7" stroke-width="3"/>
-    <rect x="15" y="71" width="14" height="14" rx="2" fill="#e4e4e7"/>
-    <rect x="42" y="12" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="52" y="12" width="6" height="6" fill="${color}"/>
-    <rect x="42" y="24" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="52" y="28" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="12" y="44" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="24" y="44" width="6" height="6" fill="${color}"/>
-    <rect x="42" y="44" width="16" height="16" fill="${color}" opacity="0.8"/>
-    <rect x="64" y="44" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="76" y="44" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="44" y="68" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="56" y="68" width="6" height="6" fill="${color}"/>
-    <rect x="44" y="80" width="6" height="6" fill="#a1a1aa"/>
-    <rect x="68" y="72" width="20" height="18" fill="#a1a1aa" opacity="0.6"/>
-  </svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-}
-
 /**
  * QRUpload component for DeepQR Shield.
  *
  * Implements a modern enterprise-grade 3D upload chassis:
+ * - Real multipart upload targeting /api/analyze.
  * - Reactive pointer illumination and hardware 3D tilt.
- * - Interactive specimen threat presets for zero-friction testing.
- * - Authentic 1.2s high-speed optical scanning sequence with telemetry updates.
+ * - Live neural analysis state indicator.
  * - Audio-haptic feedback synchronization.
  * - Full reduced-motion and accessibility support.
- * - Zero em-dashes and en-dashes throughout.
  */
-export default function QRUpload({ onAnalysisComplete }) {
+export default function QRUpload({ onAnalysisComplete, onReset }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isStagedNoticeVisible, setIsStagedNoticeVisible] = useState(false);
-  const [activeSpecimenType, setActiveSpecimenType] = useState('safe');
   const [isScanning, setIsScanning] = useState(false);
+  const [isPairingModalOpen, setIsPairingModalOpen] = useState(false);
 
   const fileInputRef = useRef(null);
   const surfaceRef = useRef(null);
@@ -116,6 +89,11 @@ export default function QRUpload({ onAnalysisComplete }) {
       return;
     }
 
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      setErrorMessage('File is too large. Maximum allowed size is 10 MB.');
+      return;
+    }
+
     if (previewUrl && previewUrl.startsWith('blob:')) {
       URL.revokeObjectURL(previewUrl);
     }
@@ -124,20 +102,6 @@ export default function QRUpload({ onAnalysisComplete }) {
     sound.playClick();
     setSelectedFile(file);
     setPreviewUrl(url);
-    setActiveSpecimenType('safe'); // Default user upload
-  };
-
-  const handleLoadSample = (type) => {
-    sound.playClick();
-    setActiveSpecimenType(type);
-    setSelectedFile({
-      name: `specimen_${type}_sample.png`,
-      size: type === 'malicious' ? 24576 : type === 'suspicious' ? 20480 : 16384,
-      type: 'image/png',
-    });
-    setPreviewUrl(createSampleQrDataUrl(type));
-    setErrorMessage(null);
-    setIsStagedNoticeVisible(false);
   };
 
   const handleFileChange = (e) => {
@@ -184,29 +148,79 @@ export default function QRUpload({ onAnalysisComplete }) {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
+    if (onReset) {
+      onReset();
+    }
   };
 
-  const handleAnalyzeClick = () => {
+  const handleAnalyzeClick = async () => {
     if (isScanning) return;
+    if (!selectedFile || !(selectedFile instanceof File)) {
+      setErrorMessage('Please select a QR code image to analyze.');
+      return;
+    }
+
+    if (selectedFile.size > MAX_FILE_SIZE_BYTES) {
+      setErrorMessage('File is too large. Maximum allowed size is 10 MB.');
+      return;
+    }
+
     setIsScanning(true);
+    setErrorMessage(null);
+    setIsStagedNoticeVisible(false);
     sound.playScanSweep();
 
-    setTimeout(() => {
-      sound.playScanSweep();
-    }, 400);
+    const formData = new FormData();
+    formData.append('file', selectedFile);
 
-    setTimeout(() => {
-      sound.playClick();
-    }, 800);
+    try {
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        body: formData,
+      });
 
-    setTimeout(() => {
+      if (response.status === 413) {
+        throw new Error('File is too large. Maximum allowed size is 10 MB.');
+      }
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        if (!response.ok) {
+          throw new Error(`Server returned error ${response.status}`);
+        }
+      }
+
+      if (!response.ok) {
+        if (response.status >= 500 && !data?.error) {
+          throw new Error('Unable to connect to the backend server. Please verify the Python backend is running.');
+        }
+        throw new Error(data?.error || `Analysis failed with HTTP status ${response.status}`);
+      }
+
       sound.playLockSuccess();
       setIsScanning(false);
       setIsStagedNoticeVisible(true);
       if (onAnalysisComplete) {
-        onAnalysisComplete(activeSpecimenType);
+        onAnalysisComplete(data);
       }
-    }, 1200);
+    } catch (err) {
+      setIsScanning(false);
+      sound.playClick();
+      const isNetworkError =
+        err.name === 'TypeError' ||
+        err.message?.includes('Failed to fetch') ||
+        err.message?.includes('NetworkError');
+
+      if (isNetworkError) {
+        setErrorMessage(
+          'Unable to connect to the backend server. Please verify the Python backend is running.'
+        );
+      } else {
+        setErrorMessage(err.message || 'An error occurred during analysis.');
+      }
+    }
   };
 
   const triggerFileInput = () => {
@@ -271,7 +285,7 @@ export default function QRUpload({ onAnalysisComplete }) {
       className="w-full border-b border-zinc-800/80 bg-zinc-950/20 py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Specimen Preset Chips */}
+        {/* Section Header */}
         <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div className="max-w-xl">
             <h2
@@ -285,28 +299,9 @@ export default function QRUpload({ onAnalysisComplete }) {
             </p>
           </div>
 
-          {/* Quick-Load Threat Samples */}
-          <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 flex items-center gap-1 select-none">
-              <Sparkle size={12} className="text-emerald-400" />
-              <span>Or test with a sample threat:</span>
-            </span>
-            <div className="flex flex-wrap gap-1.5">
-              {[
-                { type: 'safe', label: 'Benign Doc' },
-                { type: 'suspicious', label: 'Suspicious Redirect' },
-                { type: 'malicious', label: 'Malicious IP Exploit' },
-              ].map((s) => (
-                <button
-                  key={s.type}
-                  type="button"
-                  onClick={() => handleLoadSample(s.type)}
-                  className="rounded-md border border-white/[0.1] bg-zinc-900 px-2.5 py-1 text-xs font-mono text-zinc-200 transition-all duration-150 hover:border-emerald-500/50 hover:text-emerald-300 active:scale-[0.97]"
-                >
-                  {s.label}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/5 px-3 py-1.5 text-xs font-mono text-emerald-400 self-start sm:self-end">
+            <ShieldCheck size={14} weight="bold" />
+            <span>Dual-Channel ML Verification</span>
           </div>
         </div>
 
@@ -436,16 +431,29 @@ export default function QRUpload({ onAnalysisComplete }) {
                     {isDragging ? 'Drop QR image to stage for analysis' : 'Choose a QR image or drag and drop here'}
                   </p>
                   <p className="text-xs text-zinc-300 leading-relaxed">
-                    Supported formats: PNG, JPG, JPEG, WEBP. Destination routing is quarantined and not opened automatically.
+                    Supported formats: PNG, JPG, JPEG, WEBP (up to 10 MB). Destination routing is quarantined and not opened automatically.
                   </p>
                 </div>
 
-                {/* Tactile Action Button */}
-                <div className="mt-6">
+                {/* Tactile Action Buttons */}
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                   <span className="inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-xs font-medium text-zinc-100 shadow-xs transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-zinc-600 group-hover:bg-zinc-700 group-hover:text-white motion-reduce:transition-none">
                     <UploadSimple size={15} weight="bold" />
                     <span>Browse files</span>
                   </span>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      sound.playClick();
+                      setIsPairingModalOpen(true);
+                    }}
+                    className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300 shadow-xs transition-all duration-150 hover:border-emerald-500/50 hover:bg-emerald-500/20 hover:text-emerald-200"
+                  >
+                    <DeviceMobile size={15} weight="bold" />
+                    <span>Scan with Mobile</span>
+                  </button>
                 </div>
               </div>
             ) : (
@@ -500,7 +508,8 @@ export default function QRUpload({ onAnalysisComplete }) {
                         <button
                           type="button"
                           onClick={handleReset}
-                          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                          disabled={isScanning}
+                          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] disabled:opacity-50"
                           aria-label="Remove selected file"
                           title="Remove file"
                         >
@@ -523,9 +532,9 @@ export default function QRUpload({ onAnalysisComplete }) {
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-zinc-400 font-medium">Inspection Status</dt>
-                          <dd className="mt-0.5 font-mono font-medium text-emerald-400">
-                            {isScanning ? 'Executing scan...' : 'Ready for analysis'}
+                          <dt className="text-zinc-400 font-medium">Inference Status</dt>
+                          <dd className={`mt-0.5 font-mono font-medium ${isScanning ? 'text-amber-400 animate-pulse' : 'text-emerald-400'}`}>
+                            {isScanning ? 'Executing neural models...' : 'Ready for analysis'}
                           </dd>
                         </div>
                       </dl>
@@ -545,7 +554,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
                             </span>
-                            <span>Analyzing...</span>
+                            <span>Running inference...</span>
                           </>
                         ) : (
                           <>
@@ -558,9 +567,23 @@ export default function QRUpload({ onAnalysisComplete }) {
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="inline-flex items-center rounded-md border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none"
+                        disabled={isScanning}
+                        className="inline-flex items-center rounded-md border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98] disabled:opacity-50"
                       >
                         Select different file
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sound.playClick();
+                          setIsPairingModalOpen(true);
+                        }}
+                        disabled={isScanning}
+                        className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-sm font-medium text-emerald-300 transition-colors duration-150 hover:border-emerald-500/50 hover:bg-emerald-500/20 hover:text-emerald-200 disabled:opacity-50"
+                      >
+                        <DeviceMobile size={16} weight="bold" />
+                        <span>Scan with Mobile</span>
                       </button>
                     </div>
 
@@ -573,7 +596,7 @@ export default function QRUpload({ onAnalysisComplete }) {
                       >
                         <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
                         <p>
-                          Image analyzed for defensive threat indicators. Review synthesized results below.
+                          Analysis complete. Multimodal threat assessment synthesized below.
                         </p>
                       </div>
                     )}
@@ -583,6 +606,13 @@ export default function QRUpload({ onAnalysisComplete }) {
             )}
           </div>
         </div>
+
+        {/* Mobile Companion Pairing Modal */}
+        <MobilePairingModal
+          isOpen={isPairingModalOpen}
+          onClose={() => setIsPairingModalOpen(false)}
+          onImageStaged={handleFileProcess}
+        />
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ import Footer from './components/Footer.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('analyze');
-  const [currentSpecimen, setCurrentSpecimen] = useState('safe');
+  const [analysisResult, setAnalysisResult] = useState(null);
 
   useEffect(() => {
     const sections = ['analyze', 'results'];
@@ -61,12 +61,16 @@ export default function App() {
     }
   };
 
-  const handleAnalysisComplete = (specimenKey) => {
-    setCurrentSpecimen(specimenKey);
+  const handleAnalysisComplete = (resultData) => {
+    setAnalysisResult(resultData);
     // Smoothly transition focus to the verified report
     setTimeout(() => {
       handleNavigate('results');
     }, 300);
+  };
+
+  const handleReset = () => {
+    setAnalysisResult(null);
   };
 
   return (
@@ -76,11 +80,11 @@ export default function App() {
       <main className="relative z-10 flex-1">
         <Hero onAnalyzeClick={handleAnalyzeClick} />
         <DefenseProtocolRibbon />
-        <QRUpload onAnalysisComplete={handleAnalysisComplete} />
-        <RiskAssessmentResult
-          activeSpecimenKey={currentSpecimen}
-          onSpecimenChange={setCurrentSpecimen}
+        <QRUpload
+          onAnalysisComplete={handleAnalysisComplete}
+          onReset={handleReset}
         />
+        <RiskAssessmentResult result={analysisResult} />
       </main>
       <Footer onNavigate={handleNavigate} />
     </div>
